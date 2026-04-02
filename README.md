@@ -21,19 +21,19 @@ get accessible, themeable UI primitives that work in plain HTML and framework ap
 ### CDN
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/grain-ui/dist/grain.min.css">
-<script src="https://unpkg.com/grain-ui/dist/grain.min.js" defer></script>
+<link rel="stylesheet" href="https://unpkg.com/@rachanpadmanabha/grain-ui/dist/grain.min.css">
+<script src="https://unpkg.com/@rachanpadmanabha/grain-ui/dist/grain.min.js" defer></script>
 ```
 
 ### npm
 
 ```bash
-npm install grain-ui
+npm install @rachanpadmanabha/grain-ui
 ```
 
 ```js
-import "grain-ui/css";
-import "grain-ui";
+import "@rachanpadmanabha/grain-ui/css";
+import "@rachanpadmanabha/grain-ui";
 ```
 
 ## Theming

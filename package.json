@@ -1,5 +1,5 @@
 {
-  "name": "grain-ui",
+  "name": "@rachanpadmanabha/grain-ui",
   "version": "0.1.0",
   "description": "Ultra-lightweight semantic HTML/CSS/JS UI library. No dependencies, no build step.",
   "keywords": [
