@@ -1,4 +1,4 @@
-VERSION = 0.1.0
+VERSION = 0.1.1
 BANNER = /*! Grain UI v$(VERSION) | MIT License | https://github.com/rachanpadmanabha/grain-ui */
 
 SRC_CSS = src/tokens.css src/base.css \
