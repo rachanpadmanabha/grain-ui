@@ -47,6 +47,7 @@
 [data-tooltip][data-side="bottom"]::after {
   top: calc(100% + 0.7rem);
   bottom: auto;
+  transform: translate(-50%, -0.3rem);
 }
 
 [data-tooltip][data-side="bottom"]::before {
@@ -54,4 +55,5 @@
   bottom: auto;
   border-top-color: transparent;
   border-bottom-color: var(--gr-text);
+  transform: translate(-50%, -0.3rem);
 }

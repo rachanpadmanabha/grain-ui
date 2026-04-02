@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Theming | Grain</title>
   <meta name="description" content="Override Grain design tokens, build scoped themes, and tune dark mode with CSS custom properties.">
+  <meta property="og:title" content="Theming | Grain">
+  <meta property="og:description" content="Override Grain design tokens, build scoped themes, and tune dark mode with CSS custom properties.">
+  <meta property="og:type" content="website">
   <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/dist/grain.css">
   <link rel="stylesheet" href="/docs/assets/docs.css">
@@ -15,9 +18,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/css.min.js" defer></script>
 </head>
 <body data-page="theming">
+  <a href="#main" class="skip-link">Skip to content</a>
   <header class="docs-topbar">
     <div class="docs-topbar-inner">
-      <a href="/docs/index.html" class="docs-logo">
+      <a href="/docs/" class="docs-logo">
         <span class="logo-mark">◆</span>
         <strong>Grain</strong>
       </a>
@@ -25,11 +29,11 @@
         <a href="/docs/getting-started.html">Docs</a>
         <a href="/docs/components.html">Components</a>
         <a href="/docs/theming.html" aria-current="page">Theming</a>
-        <a href="https://github.com/rachanpadmanabha/lath" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://github.com/rachanpadmanabha/grain-ui" target="_blank" rel="noreferrer">GitHub ↗</a>
       </nav>
       <div class="docs-toolbar">
         <button data-sidebar-toggle data-variant="ghost" data-size="sm" class="docs-sidebar-toggle" aria-label="Toggle section menu">Menu</button>
-        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode">◑</button>
+        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode"></button>
       </div>
     </div>
   </header>
@@ -55,7 +59,7 @@
       </section>
     </aside>
 
-    <main class="docs-main">
+    <main id="main" class="docs-main">
       <article class="docs-prose">
         <header class="docs-page-header">
           <span class="docs-preview-label">Design tokens</span>
@@ -74,7 +78,7 @@
                 <strong>Live theme preview</strong>
                 <p class="gr-text-muted">Drag the slider to shift buttons, badges, focus rings, and accents.</p>
               </div>
-              <span data-badge="neutral">Hue <output data-hue-output="theme-hue">173</output></span>
+              <span class="hue-value-display" data-badge="neutral">Hue <output data-hue-output="theme-hue">173</output>°</span>
             </header>
             <input id="theme-hue" data-hue-control type="range" min="0" max="360" value="173">
             <div class="docs-theme-preview-grid">
@@ -84,15 +88,17 @@
                   <span data-badge="info">interactive</span>
                 </header>
                 <p>Buttons, highlights, focus rings, and subtle surfaces all update together.</p>
-                <footer class="docs-inline">
+                <div style="display:flex;gap:0.5rem;margin-top:1rem;align-items:center;flex-wrap:wrap">
                   <button>Primary</button>
                   <button data-variant="outline">Outline</button>
-                </footer>
+                  <mark>badge</mark>
+                  <a href="#" onclick="return false">link →</a>
+                </div>
               </article>
               <div class="docs-demo">
                 <label for="theme-email">Email</label>
                 <input id="theme-email" type="email" placeholder="hello@example.com">
-                <small role="note">The focus ring uses <code>--gr-border-focus</code>.</small>
+                <small role="note" style="margin-top:0.25rem;display:block">The focus ring uses <code>--gr-border-focus</code></small>
               </div>
             </div>
           </div>
@@ -112,16 +118,16 @@
                 <tr><th>Token</th><th>Purpose</th><th>Preview</th></tr>
               </thead>
               <tbody>
-                <tr><td><code>--gr-bg</code></td><td>Page background</td><td><span class="token-swatch" style="--swatch: var(--gr-bg);"></span><code>var(--gr-bg)</code></td></tr>
-                <tr><td><code>--gr-surface</code></td><td>Cards, dialogs, panels</td><td><span class="token-swatch" style="--swatch: var(--gr-surface);"></span><code>var(--gr-surface)</code></td></tr>
-                <tr><td><code>--gr-border</code></td><td>Subtle borders and dividers</td><td><span class="token-swatch" style="--swatch: var(--gr-border);"></span><code>var(--gr-border)</code></td></tr>
-                <tr><td><code>--gr-text</code></td><td>Primary text color</td><td><span class="token-swatch" style="--swatch: var(--gr-text);"></span><code>var(--gr-text)</code></td></tr>
-                <tr><td><code>--gr-accent</code></td><td>Primary actions and emphasis</td><td><span class="token-swatch" style="--swatch: var(--gr-accent);"></span><code>var(--gr-accent)</code></td></tr>
-                <tr><td><code>--gr-accent-light</code></td><td>Subtle filled accents</td><td><span class="token-swatch" style="--swatch: var(--gr-accent-light);"></span><code>var(--gr-accent-light)</code></td></tr>
-                <tr><td><code>--gr-danger</code></td><td>Error states and destructive actions</td><td><span class="token-swatch" style="--swatch: var(--gr-danger);"></span><code>var(--gr-danger)</code></td></tr>
-                <tr><td><code>--gr-font</code></td><td>UI font stack</td><td><code>var(--gr-font)</code></td></tr>
+                <tr><td><code>--gr-bg</code></td><td>Page background</td><td><span class="token-swatch" style="--swatch: var(--gr-bg);"></span><code data-tooltip="var(--gr-bg)">var(--gr-bg)</code></td></tr>
+                <tr><td><code>--gr-surface</code></td><td>Cards, dialogs, panels</td><td><span class="token-swatch" style="--swatch: var(--gr-surface);"></span><code data-tooltip="var(--gr-surface)">var(--gr-surface)</code></td></tr>
+                <tr><td><code>--gr-border</code></td><td>Subtle borders and dividers</td><td><span class="token-swatch" style="--swatch: var(--gr-border);"></span><code data-tooltip="var(--gr-border)">var(--gr-border)</code></td></tr>
+                <tr><td><code>--gr-text</code></td><td>Primary text color</td><td><span class="token-swatch" style="--swatch: var(--gr-text);"></span><code data-tooltip="var(--gr-text)">var(--gr-text)</code></td></tr>
+                <tr><td><code>--gr-accent</code></td><td>Primary actions and emphasis</td><td><span class="token-swatch" style="--swatch: var(--gr-accent);"></span><code data-tooltip="var(--gr-accent)">var(--gr-accent)</code></td></tr>
+                <tr><td><code>--gr-accent-light</code></td><td>Subtle filled accents</td><td><span class="token-swatch" style="--swatch: var(--gr-accent-light);"></span><code data-tooltip="var(--gr-accent-light)">var(--gr-accent-light)</code></td></tr>
+                <tr><td><code>--gr-danger</code></td><td>Error states and destructive actions</td><td><span class="token-swatch" style="--swatch: var(--gr-danger);"></span><code data-tooltip="var(--gr-danger)">var(--gr-danger)</code></td></tr>
+                <tr><td><code>--gr-font</code></td><td>UI font stack</td><td><code data-tooltip="var(--gr-font)">var(--gr-font)</code></td></tr>
                 <tr><td><code>--gr-radius</code></td><td>Base corner radius</td><td><code>8px</code></td></tr>
-                <tr><td><code>--gr-shadow</code></td><td>Default elevation</td><td><code>var(--gr-shadow)</code></td></tr>
+                <tr><td><code>--gr-shadow</code></td><td>Default elevation</td><td><code data-tooltip="var(--gr-shadow)">var(--gr-shadow)</code></td></tr>
               </tbody>
             </table>
           </div>
@@ -132,9 +138,9 @@
             <h2>Dark mode</h2>
             <p>Grain ships dark tokens out of the box and respects <code>prefers-color-scheme</code>. If you want an explicit app-level toggle, set <code>data-theme</code> yourself.</p>
           </div>
-          <div class="docs-snippet-grid">
-            <div class="docs-demo">
-              <span class="docs-preview-label">Automatic</span>
+          <div class="code-compare">
+            <div class="code-compare-block">
+              <p class="code-compare-label">Automatic</p>
               <pre><code class="language-css">@media (prefers-color-scheme: dark) {
   :root {
     --gr-bg: hsl(0 0% 9%);
@@ -143,8 +149,8 @@
   }
 }</code></pre>
             </div>
-            <div class="docs-demo">
-              <span class="docs-preview-label">Explicit override</span>
+            <div class="code-compare-block">
+              <p class="code-compare-label">Explicit override</p>
               <pre><code class="language-css">html[data-theme="dark"] {
   --gr-bg: hsl(0 0% 9%);
   --gr-surface: hsl(0 0% 11%);

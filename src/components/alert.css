@@ -1,4 +1,4 @@
-:where([role="alert"], [role="status"], [role="note"], [role="complementary"]) {
+:where(aside[role="alert"], aside[role="status"], aside[role="note"], aside[role="complementary"]) {
   display: flex;
   gap: var(--gr-space-3);
   align-items: flex-start;
@@ -8,25 +8,25 @@
   font-size: var(--gr-text-sm);
 }
 
-[role="alert"] {
+aside[role="alert"] {
   background: var(--gr-danger-light);
   border-color: var(--gr-danger);
   color: var(--gr-danger);
 }
 
-[role="note"] {
+aside[role="note"] {
   background: var(--gr-info-light);
   border-color: var(--gr-info);
   color: var(--gr-info);
 }
 
-[role="status"] {
+aside[role="status"] {
   background: var(--gr-success-light);
   border-color: var(--gr-success);
   color: var(--gr-success);
 }
 
-[role="complementary"] {
+aside[role="complementary"] {
   background: var(--gr-warning-light);
   border-color: var(--gr-warning);
   color: var(--gr-warning);

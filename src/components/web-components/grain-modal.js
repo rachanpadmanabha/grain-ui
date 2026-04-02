@@ -15,10 +15,8 @@ export class GrainModal extends HTMLElement {
       this.id = `grain-modal-${Math.random().toString(36).slice(2, 8)}`;
     }
 
-    this._triggers = Array.from(document.querySelectorAll(`[data-modal="${this.id}"]`));
     this._closeButtons = Array.from(this.querySelectorAll("[data-close]"));
 
-    this._open = () => this.open();
     this._close = () => this.close();
     this._onDialogClick = (event) => {
       if (event.target === this._dialog) {
@@ -26,22 +24,26 @@ export class GrainModal extends HTMLElement {
       }
     };
 
-    this._triggers.forEach((trigger) => {
-      trigger.setAttribute("aria-haspopup", "dialog");
-      trigger.addEventListener("click", this._open);
-    });
+    this._onGlobalClick = (event) => {
+      const trigger = event.target.closest(`[data-modal="${this.id}"]`);
+      if (trigger) {
+        trigger.setAttribute("aria-haspopup", "dialog");
+        this.open();
+      }
+    };
 
     this._closeButtons.forEach((button) => {
       button.addEventListener("click", this._close);
     });
 
     this._dialog.addEventListener("click", this._onDialogClick);
+    document.addEventListener("click", this._onGlobalClick);
   }
 
   disconnectedCallback() {
-    this._triggers?.forEach((trigger) => trigger.removeEventListener("click", this._open));
     this._closeButtons?.forEach((button) => button.removeEventListener("click", this._close));
     this._dialog?.removeEventListener("click", this._onDialogClick);
+    document.removeEventListener("click", this._onGlobalClick);
   }
 
   open() {

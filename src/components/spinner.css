@@ -5,7 +5,9 @@
   border: 2px solid var(--gr-border);
   border-top-color: var(--gr-accent);
   border-radius: 50%;
-  animation: gr-spin 0.7s linear infinite;
+  animation: gr-spin var(--gr-duration-slow) linear infinite;
+}
+
 [data-spinner][data-size="lg"] {
   width: 1.5rem;
   height: 1.5rem;

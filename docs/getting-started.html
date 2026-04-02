@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Getting Started | Grain</title>
   <meta name="description" content="Install Grain from a CDN or npm, then build your first page with semantic HTML and tiny custom elements.">
+  <meta property="og:title" content="Getting Started | Grain">
+  <meta property="og:description" content="Install Grain from a CDN or npm, then build your first page with semantic HTML and tiny custom elements.">
+  <meta property="og:type" content="website">
   <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/dist/grain.css">
   <link rel="stylesheet" href="/docs/assets/docs.css">
@@ -16,9 +19,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/javascript.min.js" defer></script>
 </head>
 <body data-page="getting-started">
+  <a href="#main" class="skip-link">Skip to content</a>
   <header class="docs-topbar">
     <div class="docs-topbar-inner">
-      <a href="/docs/index.html" class="docs-logo">
+      <a href="/docs/" class="docs-logo">
         <span class="logo-mark">◆</span>
         <strong>Grain</strong>
       </a>
@@ -26,11 +30,11 @@
         <a href="/docs/getting-started.html" aria-current="page">Docs</a>
         <a href="/docs/components.html">Components</a>
         <a href="/docs/theming.html">Theming</a>
-        <a href="https://github.com/rachanpadmanabha/lath" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://github.com/rachanpadmanabha/grain-ui" target="_blank" rel="noreferrer">GitHub ↗</a>
       </nav>
       <div class="docs-toolbar">
         <button data-sidebar-toggle data-variant="ghost" data-size="sm" class="docs-sidebar-toggle" aria-label="Toggle section menu">Menu</button>
-        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode">◑</button>
+        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode"></button>
       </div>
     </div>
   </header>
@@ -57,7 +61,7 @@
       </section>
     </aside>
 
-    <main class="docs-main">
+    <main id="main" class="docs-main">
       <article class="docs-prose">
         <header class="docs-page-header">
           <span class="docs-preview-label">Quick start</span>
@@ -67,28 +71,26 @@
 
         <section class="docs-section" id="install">
           <div>
-            <h2>1. Install</h2>
+            <h2 class="docs-step-heading"><span class="docs-step-number">01</span>Install</h2>
             <p>Use the CDN snippet for prototypes or the npm package for apps and design systems.</p>
           </div>
-          <div class="docs-snippet-grid">
-            <div class="docs-demo">
-              <span class="docs-preview-label">CDN</span>
-              <pre><code class="language-html">&lt;link rel="stylesheet" href="https://unpkg.com/grain-ui/dist/grain.min.css"&gt;
+          <div class="docs-demo">
+            <span class="docs-preview-label">CDN</span>
+            <pre><code class="language-html">&lt;link rel="stylesheet" href="https://unpkg.com/grain-ui/dist/grain.min.css"&gt;
 &lt;script src="https://unpkg.com/grain-ui/dist/grain.min.js" defer&gt;&lt;/script&gt;</code></pre>
-            </div>
-            <div class="docs-demo">
-              <span class="docs-preview-label">npm</span>
-              <pre><code class="language-javascript">npm install grain-ui
+          </div>
+          <div class="docs-demo">
+            <span class="docs-preview-label">npm</span>
+            <pre><code class="language-javascript">npm install grain-ui
 
 import "grain-ui/css";
 import "grain-ui";</code></pre>
-            </div>
           </div>
         </section>
 
         <section class="docs-section" id="first-page">
           <div>
-            <h2>2. Your first page</h2>
+            <h2 class="docs-step-heading"><span class="docs-step-number">02</span>Your first page</h2>
             <p>Start with native elements. Grain styles them semantically, so your markup stays clean and portable.</p>
           </div>
           <pre><code class="language-html">&lt;!DOCTYPE html&gt;
@@ -112,7 +114,7 @@ import "grain-ui";</code></pre>
 
         <section class="docs-section" id="first-components">
           <div>
-            <h2>3. Add a button, a form, and a modal</h2>
+            <h2 class="docs-step-heading"><span class="docs-step-number">03</span>Add a button, a form, and a modal</h2>
             <p>Variants and validation are driven by attributes, not component classes.</p>
           </div>
           <div class="docs-demo">
@@ -170,7 +172,7 @@ import "grain-ui";</code></pre>
 
         <section class="docs-section" id="customizing">
           <div>
-            <h2>4. Customize colors</h2>
+            <h2 class="docs-step-heading"><span class="docs-step-number">04</span>Customize colors</h2>
             <p>Most themes start by changing the hue, accent, and surface tokens. You can override them globally or on a subtree.</p>
           </div>
           <pre><code class="language-css">:root {
@@ -187,7 +189,7 @@ import "grain-ui";</code></pre>
 
         <section class="docs-section" id="web-components">
           <div>
-            <h2>5. Use the Web Components when you need behavior</h2>
+            <h2 class="docs-step-heading"><span class="docs-step-number">05</span>Use the Web Components when you need behavior</h2>
             <p>Tabs, toasts, dropdowns, and modal helpers are custom elements with shadow DOM turned off, so they inherit your global styles naturally.</p>
           </div>
           <div class="docs-demo">
@@ -217,7 +219,7 @@ import "grain-ui";</code></pre>
 
         <section class="docs-section" id="frameworks">
           <div>
-            <h2>6. Framework integration notes</h2>
+            <h2 class="docs-step-heading"><span class="docs-step-number">06</span>Framework integration notes</h2>
             <p>Grain works best when you let the browser keep doing browser things.</p>
           </div>
           <div class="docs-demo-grid">

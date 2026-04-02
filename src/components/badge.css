@@ -10,6 +10,7 @@ mark,
   border: 1px solid transparent;
   background: var(--gr-accent-light);
   color: var(--gr-accent-text);
+  white-space: nowrap;
 }
 
 mark {

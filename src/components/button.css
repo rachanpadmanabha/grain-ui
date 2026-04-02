@@ -100,11 +100,36 @@
   border: 2px solid currentColor;
   border-top-color: transparent;
   border-radius: 50%;
-  animation: gr-spin 0.6s linear infinite;
+  animation: gr-spin var(--gr-duration-slow) linear infinite;
 }
 
 @keyframes gr-spin {
   to {
     transform: rotate(360deg);
   }
+}
+
+a[role="button"] {
+  color: var(--gr-text-inverse);
+  text-decoration: none;
+}
+
+a[role="button"]:hover {
+  text-decoration: none;
+}
+
+a[role="button"][data-variant="outline"] {
+  color: var(--gr-text);
+}
+
+a[role="button"][data-variant="ghost"] {
+  color: var(--gr-text);
+}
+
+a[role="button"][data-variant="danger"] {
+  color: var(--gr-text-inverse);
+}
+
+a[role="button"][data-variant="subtle"] {
+  color: var(--gr-accent-text);
 }

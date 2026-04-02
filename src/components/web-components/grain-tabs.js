@@ -13,6 +13,10 @@ export class GrainTabs extends HTMLElement {
     }
 
     this._mounted = true;
+    requestAnimationFrame(() => this._init());
+  }
+
+  _init() {
     this._tabs = Array.from(this.querySelectorAll('[role="tab"]'));
     this._panels = Array.from(this.querySelectorAll('[role="tabpanel"]'));
 
@@ -80,9 +84,9 @@ export class GrainTabs extends HTMLElement {
 
     let nextIndex = index;
     if (event.key === "ArrowRight" || (isVertical && event.key === "ArrowDown")) {
-      nextIndex = Math.min(index + 1, this._tabs.length - 1);
+      nextIndex = (index + 1) % this._tabs.length;
     } else if (event.key === "ArrowLeft" || (isVertical && event.key === "ArrowUp")) {
-      nextIndex = Math.max(index - 1, 0);
+      nextIndex = (index - 1 + this._tabs.length) % this._tabs.length;
     } else if (event.key === "Home") {
       nextIndex = 0;
     } else if (event.key === "End") {

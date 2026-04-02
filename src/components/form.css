@@ -102,6 +102,7 @@ label {
   accent-color: var(--gr-accent);
   vertical-align: middle;
   cursor: pointer;
+  color-scheme: inherit;
 }
 
 input[type="checkbox"]:focus-visible,

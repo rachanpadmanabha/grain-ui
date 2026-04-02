@@ -72,15 +72,22 @@ export class GrainToast extends HTMLElement {
     this._applyType();
     this._setTimer();
 
-    if (!this._animated && this.animate) {
+    if (
+      !this._animated &&
+      this.animate &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       this._animated = true;
+      const dur =
+        parseInt(getComputedStyle(this).getPropertyValue("--gr-duration")) ||
+        200;
       this.animate(
         [
           { opacity: 0, transform: "translateY(0.75rem)" },
           { opacity: 1, transform: "translateY(0)" }
         ],
         {
-          duration: 240,
+          duration: dur,
           easing: "cubic-bezier(0.16, 1, 0.3, 1)",
           fill: "both"
         }
@@ -118,6 +125,10 @@ export class GrainToast extends HTMLElement {
 
   static show(message, { type = "default", duration = 4000 } = {}) {
     const region = ensureToastRegion();
+    const MAX_TOASTS = 5;
+    while (region.children.length >= MAX_TOASTS) {
+      region.firstElementChild.remove();
+    }
     const el = document.createElement("grain-toast");
     el.setAttribute("type", type);
     el.setAttribute("duration", String(duration));

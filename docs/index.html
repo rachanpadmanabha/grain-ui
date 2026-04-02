@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grain | Semantic-first UI library</title>
   <meta name="description" content="Grain is a semantic-first UI library built from native HTML, CSS custom properties, and tiny Web Components.">
+  <meta property="og:title" content="Grain | Semantic-first UI library">
+  <meta property="og:description" content="Grain styles the HTML you already write, stays tiny, and themes through CSS variables.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/rachanpadmanabha/grain-ui">
   <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/dist/grain.css">
   <link rel="stylesheet" href="/docs/assets/docs.css">
@@ -15,9 +19,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/xml.min.js" defer></script>
 </head>
 <body data-page="home">
+  <a href="#main" class="skip-link">Skip to content</a>
   <header class="docs-topbar">
     <div class="docs-topbar-inner">
-      <a href="/docs/index.html" class="docs-logo">
+      <a href="/docs/" class="docs-logo">
         <span class="logo-mark">◆</span>
         <strong>Grain</strong>
       </a>
@@ -25,15 +30,15 @@
         <a href="/docs/getting-started.html">Docs</a>
         <a href="/docs/components.html">Components</a>
         <a href="/docs/theming.html">Theming</a>
-        <a href="https://github.com/rachanpadmanabha/lath" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://github.com/rachanpadmanabha/grain-ui" target="_blank" rel="noreferrer">GitHub ↗</a>
       </nav>
       <div class="docs-toolbar">
-        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode">◑</button>
+        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode"></button>
       </div>
     </div>
   </header>
 
-  <main class="docs-home">
+  <main id="main" class="docs-home">
     <section class="docs-hero">
       <div class="hero-copy">
         <div class="hero-eyebrow">
@@ -45,7 +50,7 @@
         <p class="hero-sub">Grain styles the HTML you already write, adds tiny browser-native behavior where it helps, and stays fully themeable through plain CSS variables.</p>
         <div class="hero-actions">
           <a href="/docs/getting-started.html" role="button">Get started →</a>
-          <a href="/docs/components.html" role="button" data-variant="outline">Browse components</a>
+          <a href="/docs/components.html" role="button" data-variant="outline">Browse components →</a>
         </div>
       </div>
       <aside class="hero-panel">
@@ -64,33 +69,33 @@ import "grain-ui";</code></pre>
     </section>
 
     <section class="docs-features">
-      <article>
-        <span class="docs-preview-label">01</span>
+      <article data-group="1">
+        <span class="feature-number">01</span>
         <h3>Semantic-first</h3>
         <p>A <code>&lt;button&gt;</code> looks right. A <code>&lt;dialog&gt;</code> works. Attributes like <code>aria-invalid</code> and <code>data-variant</code> drive state. No class soup.</p>
       </article>
-      <article>
-        <span class="docs-preview-label">02</span>
+      <article data-group="1">
+        <span class="feature-number">02</span>
         <h3>Tiny by design</h3>
         <p>Grain ships as one CSS file and one JS file. You can use the whole library with a pair of tags and no build step at all.</p>
       </article>
-      <article>
-        <span class="docs-preview-label">03</span>
+      <article data-group="1">
+        <span class="feature-number">03</span>
         <h3>Zero dependencies</h3>
         <p>No React lock-in, no utility compiler, no preprocessors. Include it from a CDN or install it from npm and go.</p>
       </article>
-      <article>
-        <span class="docs-preview-label">04</span>
+      <article data-group="2">
+        <span class="feature-number">04</span>
         <h3>Themeable with tokens</h3>
         <p>Override a few CSS variables or replace every token. The library is designed to be rethemed from <code>:root</code>.</p>
       </article>
-      <article>
-        <span class="docs-preview-label">05</span>
+      <article data-group="2">
+        <span class="feature-number">05</span>
         <h3>Dark mode built in</h3>
         <p>Grain respects <code>prefers-color-scheme</code> automatically and also supports explicit <code>data-theme</code> overrides.</p>
       </article>
-      <article>
-        <span class="docs-preview-label">06</span>
+      <article data-group="2">
+        <span class="feature-number">06</span>
         <h3>Framework-friendly</h3>
         <p>Custom elements for tabs, modals, dropdowns, and toasts work the same way in plain HTML, React, Vue, Astro, and Svelte.</p>
       </article>
@@ -110,7 +115,7 @@ import "grain-ui";</code></pre>
         <article class="preview-module">
           <header>
             <div>
-              <span class="docs-preview-label">Primitives</span>
+              <span class="preview-category-label">Primitives</span>
               <h3>Actions and status</h3>
               <p>Default buttons, variants, and badges without any component classes.</p>
             </div>
@@ -135,7 +140,7 @@ import "grain-ui";</code></pre>
         <article class="preview-module">
           <header>
             <div>
-              <span class="docs-preview-label">Feedback</span>
+              <span class="preview-category-label">Feedback</span>
               <h3>Alerts and toasts</h3>
               <p>Role-driven status blocks plus lightweight notifications when you need motion.</p>
             </div>
@@ -155,7 +160,7 @@ import "grain-ui";</code></pre>
         <article class="preview-module">
           <header>
             <div>
-              <span class="docs-preview-label">Forms</span>
+              <span class="preview-category-label">Forms</span>
               <h3>Validation states</h3>
               <p>Labels, inputs, helpers, and error states styled through semantics and ARIA.</p>
             </div>
@@ -185,11 +190,11 @@ import "grain-ui";</code></pre>
         <article class="preview-module preview-module--wide">
           <header>
             <div>
-              <span class="docs-preview-label">Layout</span>
+              <span class="preview-category-label">Layout</span>
               <h3>Cards and dialog flows</h3>
               <p>Articles become cards automatically, and the modal helper layers behavior onto the native dialog element.</p>
             </div>
-            <button data-modal="home-modal" data-size="sm">Open modal</button>
+            <button data-modal="home-modal" data-variant="outline" data-size="sm">Open modal</button>
           </header>
           <div class="preview-cards">
             <article>
@@ -220,7 +225,7 @@ import "grain-ui";</code></pre>
         <article class="preview-module preview-module--wide">
           <header>
             <div>
-              <span class="docs-preview-label">Interactive</span>
+              <span class="preview-category-label">Interactive</span>
               <h3>Tabs and data views</h3>
               <p>Custom elements only where they add value. Everything else stays native and readable.</p>
             </div>
@@ -277,7 +282,7 @@ import "grain-ui";</code></pre>
       </div>
       <div class="docs-theme-lab">
         <div class="docs-demo">
-          <label for="home-hue">Hue demo <span data-badge="neutral"><output data-hue-output="home-hue">173</output></span></label>
+          <label for="home-hue" class="hue-value-display">Hue <output data-hue-output="home-hue">173</output>°</label>
           <input id="home-hue" data-hue-control type="range" min="0" max="360" value="173">
           <p class="gr-text-muted">Override radius, fonts, surfaces, focus rings, and dark mode tokens after the hue if you need a more branded result.</p>
         </div>
@@ -308,17 +313,42 @@ import "grain-ui";</code></pre>
       </div>
     </section>
 
-    <footer class="docs-footer">
-      <div>
-        <span class="logo-mark">◆</span> <strong>Grain</strong>
-        <span class="gr-text-muted">semantic-first UI, MIT licensed</span>
+    <section class="docs-closing-cta">
+      <div class="docs-cta-inner">
+        <h2>Ready to ship?</h2>
+        <p>Two files. No build step. No dependencies. Add Grain to your project in 30 seconds.</p>
+        <div class="hero-actions">
+          <a href="/docs/getting-started.html" role="button">Get started →</a>
+          <a href="/docs/components.html" role="button" data-variant="outline">Browse components →</a>
+        </div>
+        <div class="hero-install">
+          <code>npm install grain-ui</code>
+          <button data-variant="ghost" data-size="sm"
+                  onclick="navigator.clipboard.writeText('npm install grain-ui').then(() => { this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy',2000) })">
+            Copy
+          </button>
+        </div>
       </div>
-      <nav aria-label="Footer navigation">
-        <a href="/docs/getting-started.html">Docs</a>
-        <a href="/docs/components.html">Components</a>
-        <a href="/docs/theming.html">Theming</a>
-        <a href="https://github.com/rachanpadmanabha/lath" target="_blank" rel="noreferrer">GitHub</a>
-      </nav>
+    </section>
+
+    <footer class="docs-footer">
+      <div class="docs-footer-inner">
+        <div class="docs-footer-brand">
+          <span class="logo-mark">◆</span>
+          <strong>Grain UI</strong>
+          <span class="gr-text-muted">— Semantic-first. MIT License.</span>
+        </div>
+        <nav class="docs-footer-nav" aria-label="Footer navigation">
+          <a href="/docs/getting-started.html">Docs</a>
+          <a href="/docs/components.html">Components</a>
+          <a href="/docs/theming.html">Theming</a>
+          <a href="https://github.com/rachanpadmanabha/grain-ui" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://npmjs.com/package/grain-ui" target="_blank" rel="noopener">npm</a>
+        </nav>
+      </div>
+      <div class="docs-footer-sub">
+        <span class="gr-text-muted" style="font-size: var(--gr-text-xs)">Built with Grain. The docs site is the demo.</span>
+      </div>
     </footer>
   </main>
 

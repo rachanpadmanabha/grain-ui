@@ -10,13 +10,13 @@
     "semantic",
     "lightweight"
   ],
-  "homepage": "https://github.com/rachanpadmanabha/lath",
+  "homepage": "https://github.com/rachanpadmanabha/grain-ui",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rachanpadmanabha/lath.git"
+    "url": "git+https://github.com/rachanpadmanabha/grain-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/rachanpadmanabha/lath/issues"
+    "url": "https://github.com/rachanpadmanabha/grain-ui/issues"
   },
   "license": "MIT",
   "type": "module",
@@ -41,7 +41,8 @@
     "LICENSE"
   ],
   "sideEffects": [
-    "*.css"
+    "*.css",
+    "*.js"
   ],
   "scripts": {
     "build": "make all",

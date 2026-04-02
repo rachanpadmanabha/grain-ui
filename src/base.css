@@ -180,7 +180,6 @@ tbody tr:hover td {
 }
 
 details {
-  border: 1px solid var(--gr-border);
   border-radius: var(--gr-radius);
   padding: var(--gr-space-4);
   background: var(--gr-surface);
@@ -219,4 +218,15 @@ blockquote {
 
 ::selection {
   background: hsl(var(--gr-hue) 70% 50% / 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

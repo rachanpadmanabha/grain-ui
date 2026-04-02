@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Components | Grain</title>
   <meta name="description" content="Component reference for Grain: buttons, forms, cards, alerts, tabs, modals, dropdowns, and more.">
+  <meta property="og:title" content="Components | Grain">
+  <meta property="og:description" content="Component reference for Grain: buttons, forms, cards, alerts, tabs, modals, dropdowns, and more.">
+  <meta property="og:type" content="website">
   <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/dist/grain.css">
   <link rel="stylesheet" href="/docs/assets/docs.css">
@@ -15,9 +18,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/xml.min.js" defer></script>
 </head>
 <body data-page="components">
+  <a href="#main" class="skip-link">Skip to content</a>
   <header class="docs-topbar">
     <div class="docs-topbar-inner">
-      <a href="/docs/index.html" class="docs-logo">
+      <a href="/docs/" class="docs-logo">
         <span class="logo-mark">◆</span>
         <strong>Grain</strong>
       </a>
@@ -25,11 +29,11 @@
         <a href="/docs/getting-started.html">Docs</a>
         <a href="/docs/components.html" aria-current="page">Components</a>
         <a href="/docs/theming.html">Theming</a>
-        <a href="https://github.com/rachanpadmanabha/lath" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://github.com/rachanpadmanabha/grain-ui" target="_blank" rel="noreferrer">GitHub ↗</a>
       </nav>
       <div class="docs-toolbar">
         <button data-sidebar-toggle data-variant="ghost" data-size="sm" class="docs-sidebar-toggle" aria-label="Toggle section menu">Menu</button>
-        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode">◑</button>
+        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode"></button>
       </div>
     </div>
   </header>
@@ -57,7 +61,7 @@
       </section>
     </aside>
 
-    <main class="docs-main">
+    <main id="main" class="docs-main">
       <article class="docs-prose">
         <header class="docs-page-header">
           <span class="docs-preview-label">Component library</span>
@@ -201,14 +205,14 @@
           <h2>Nav</h2>
           <div class="docs-demo docs-demo-grid">
             <nav aria-label="Primary">
-              <a href="#" aria-current="page">Overview</a>
-              <a href="#">Projects</a>
-              <a href="#">Billing</a>
+              <a href="#nav" aria-current="page">Overview</a>
+              <a href="#nav">Projects</a>
+              <a href="#nav">Billing</a>
             </nav>
             <nav aria-label="Settings" data-layout="vertical">
-              <a href="#" aria-current="page">Profile</a>
-              <a href="#">Notifications</a>
-              <a href="#">Security</a>
+              <a href="#nav" aria-current="page">Profile</a>
+              <a href="#nav">Notifications</a>
+              <a href="#nav">Security</a>
             </nav>
           </div>
           <pre><code class="language-html">&lt;nav aria-label="Primary"&gt;
@@ -254,7 +258,7 @@
         <section class="docs-section" id="modal">
           <h2>Modal</h2>
           <div class="docs-demo">
-            <button data-modal="components-modal">Open modal</button>
+            <button data-modal="components-modal" data-variant="outline">Open modal</button>
             <grain-modal id="components-modal">
               <dialog>
                 <header>
@@ -340,17 +344,41 @@
         <section class="docs-section" id="dropdown">
           <h2>Dropdown</h2>
           <div class="docs-demo">
-            <grain-dropdown>
-              <details>
-                <summary>Actions</summary>
-                <div role="menu">
-                  <button type="button">Rename</button>
-                  <button type="button">Duplicate</button>
-                  <div role="separator"></div>
-                  <button type="button">Archive</button>
-                </div>
-              </details>
-            </grain-dropdown>
+            <div class="docs-demo-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))">
+              <article>
+                <header>
+                  <strong>Project Alpha</strong>
+                  <grain-dropdown>
+                    <details>
+                      <summary>Actions</summary>
+                      <div role="menu">
+                        <button type="button">Rename</button>
+                        <button type="button">Duplicate</button>
+                        <div role="separator"></div>
+                        <button type="button">Archive</button>
+                      </div>
+                    </details>
+                  </grain-dropdown>
+                </header>
+                <p>A card with a dropdown menu in its header — the most common pattern.</p>
+              </article>
+              <article>
+                <header>
+                  <strong>Billing</strong>
+                  <grain-dropdown>
+                    <details>
+                      <summary>Export</summary>
+                      <div role="menu">
+                        <button type="button">CSV</button>
+                        <button type="button">JSON</button>
+                        <button type="button">PDF</button>
+                      </div>
+                    </details>
+                  </grain-dropdown>
+                </header>
+                <p>Dropdown items can be any focusable element inside <code>[role="menu"]</code>.</p>
+              </article>
+            </div>
           </div>
           <pre><code class="language-html">&lt;grain-dropdown&gt;
   &lt;details&gt;
