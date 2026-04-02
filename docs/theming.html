@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theming | Grain</title>
+  <meta name="description" content="Override Grain design tokens, build scoped themes, and tune dark mode with CSS custom properties.">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/dist/grain.css">
+  <link rel="stylesheet" href="/docs/assets/docs.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/css.min.js" defer></script>
+</head>
+<body data-page="theming">
+  <header class="docs-topbar">
+    <div class="docs-topbar-inner">
+      <a href="/docs/index.html" class="docs-logo">
+        <span class="logo-mark">◆</span>
+        <strong>Grain</strong>
+      </a>
+      <nav aria-label="Top navigation">
+        <a href="/docs/getting-started.html">Docs</a>
+        <a href="/docs/components.html">Components</a>
+        <a href="/docs/theming.html" aria-current="page">Theming</a>
+        <a href="https://github.com/rachanpadmanabha/lath" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </nav>
+      <div class="docs-toolbar">
+        <button data-sidebar-toggle data-variant="ghost" data-size="sm" class="docs-sidebar-toggle" aria-label="Toggle section menu">Menu</button>
+        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode">◑</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="docs-shell">
+    <aside class="docs-sidebar">
+      <section>
+        <h2>Theming guide</h2>
+        <nav aria-label="Theming sections" data-layout="vertical">
+          <a href="#hue">Hue control</a>
+          <a href="#tokens">Token reference</a>
+          <a href="#dark-mode">Dark mode</a>
+          <a href="#theme-snippets">Theme snippets</a>
+          <a href="#scoped-theme">Scoped themes</a>
+        </nav>
+      </section>
+      <section>
+        <h2>Related</h2>
+        <nav aria-label="Secondary navigation" data-layout="vertical">
+          <a href="/docs/getting-started.html">Getting started →</a>
+          <a href="/docs/components.html">Component reference →</a>
+        </nav>
+      </section>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-prose">
+        <header class="docs-page-header">
+          <span class="docs-preview-label">Design tokens</span>
+          <h1>Theme Grain by changing the variables, not the markup.</h1>
+          <p class="docs-lead">Every public visual decision lives behind a CSS custom property. Override the token file globally, or scope a theme to a single subtree.</p>
+        </header>
+
+        <section class="docs-section" id="hue">
+          <div>
+            <h2>Interactive hue control</h2>
+            <p>The default color system pivots around <code>--gr-hue</code>. This keeps the accent family coherent while leaving room for full token overrides.</p>
+          </div>
+          <div class="docs-theme-preview">
+            <header>
+              <div>
+                <strong>Live theme preview</strong>
+                <p class="gr-text-muted">Drag the slider to shift buttons, badges, focus rings, and accents.</p>
+              </div>
+              <span data-badge="neutral">Hue <output data-hue-output="theme-hue">173</output></span>
+            </header>
+            <input id="theme-hue" data-hue-control type="range" min="0" max="360" value="173">
+            <div class="docs-theme-preview-grid">
+              <article>
+                <header>
+                  <strong>Preview card</strong>
+                  <span data-badge="info">interactive</span>
+                </header>
+                <p>Buttons, highlights, focus rings, and subtle surfaces all update together.</p>
+                <footer class="docs-inline">
+                  <button>Primary</button>
+                  <button data-variant="outline">Outline</button>
+                </footer>
+              </article>
+              <div class="docs-demo">
+                <label for="theme-email">Email</label>
+                <input id="theme-email" type="email" placeholder="hello@example.com">
+                <small role="note">The focus ring uses <code>--gr-border-focus</code>.</small>
+              </div>
+            </div>
+          </div>
+          <pre><code class="language-css">:root {
+  --gr-hue: 173;
+}</code></pre>
+        </section>
+
+        <section class="docs-section" id="tokens">
+          <div>
+            <h2>Token reference</h2>
+            <p>These are the main variables you are likely to override first. The full source of truth lives in <code>src/tokens.css</code>.</p>
+          </div>
+          <div data-table-wrap>
+            <table class="docs-token-table">
+              <thead>
+                <tr><th>Token</th><th>Purpose</th><th>Preview</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>--gr-bg</code></td><td>Page background</td><td><span class="token-swatch" style="--swatch: var(--gr-bg);"></span><code>var(--gr-bg)</code></td></tr>
+                <tr><td><code>--gr-surface</code></td><td>Cards, dialogs, panels</td><td><span class="token-swatch" style="--swatch: var(--gr-surface);"></span><code>var(--gr-surface)</code></td></tr>
+                <tr><td><code>--gr-border</code></td><td>Subtle borders and dividers</td><td><span class="token-swatch" style="--swatch: var(--gr-border);"></span><code>var(--gr-border)</code></td></tr>
+                <tr><td><code>--gr-text</code></td><td>Primary text color</td><td><span class="token-swatch" style="--swatch: var(--gr-text);"></span><code>var(--gr-text)</code></td></tr>
+                <tr><td><code>--gr-accent</code></td><td>Primary actions and emphasis</td><td><span class="token-swatch" style="--swatch: var(--gr-accent);"></span><code>var(--gr-accent)</code></td></tr>
+                <tr><td><code>--gr-accent-light</code></td><td>Subtle filled accents</td><td><span class="token-swatch" style="--swatch: var(--gr-accent-light);"></span><code>var(--gr-accent-light)</code></td></tr>
+                <tr><td><code>--gr-danger</code></td><td>Error states and destructive actions</td><td><span class="token-swatch" style="--swatch: var(--gr-danger);"></span><code>var(--gr-danger)</code></td></tr>
+                <tr><td><code>--gr-font</code></td><td>UI font stack</td><td><code>var(--gr-font)</code></td></tr>
+                <tr><td><code>--gr-radius</code></td><td>Base corner radius</td><td><code>8px</code></td></tr>
+                <tr><td><code>--gr-shadow</code></td><td>Default elevation</td><td><code>var(--gr-shadow)</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="docs-section" id="dark-mode">
+          <div>
+            <h2>Dark mode</h2>
+            <p>Grain ships dark tokens out of the box and respects <code>prefers-color-scheme</code>. If you want an explicit app-level toggle, set <code>data-theme</code> yourself.</p>
+          </div>
+          <div class="docs-snippet-grid">
+            <div class="docs-demo">
+              <span class="docs-preview-label">Automatic</span>
+              <pre><code class="language-css">@media (prefers-color-scheme: dark) {
+  :root {
+    --gr-bg: hsl(0 0% 9%);
+    --gr-surface: hsl(0 0% 11%);
+    --gr-text: hsl(0 0% 94%);
+  }
+}</code></pre>
+            </div>
+            <div class="docs-demo">
+              <span class="docs-preview-label">Explicit override</span>
+              <pre><code class="language-css">html[data-theme="dark"] {
+  --gr-bg: hsl(0 0% 9%);
+  --gr-surface: hsl(0 0% 11%);
+  --gr-text: hsl(0 0% 94%);
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section" id="theme-snippets">
+          <div>
+            <h2>Example theme snippets</h2>
+            <p>Here are four starting points you can drop into your own app and tune from there.</p>
+          </div>
+          <div class="docs-snippet-grid">
+            <div class="docs-demo">
+              <h3>Warm / earthy</h3>
+              <pre><code class="language-css">:root {
+  --gr-hue: 28;
+  --gr-accent: hsl(28 75% 44%);
+  --gr-accent-hover: hsl(28 75% 38%);
+  --gr-accent-light: hsl(28 90% 93%);
+}</code></pre>
+            </div>
+            <div class="docs-demo">
+              <h3>Cool / corporate</h3>
+              <pre><code class="language-css">:root {
+  --gr-hue: 214;
+  --gr-accent: hsl(214 84% 46%);
+  --gr-accent-hover: hsl(214 84% 40%);
+}</code></pre>
+            </div>
+            <div class="docs-demo">
+              <h3>High contrast</h3>
+              <pre><code class="language-css">:root {
+  --gr-bg: #fff;
+  --gr-text: #000;
+  --gr-border: #000;
+  --gr-accent: #000;
+  --gr-text-inverse: #fff;
+}</code></pre>
+            </div>
+            <div class="docs-demo">
+              <h3>Pastel</h3>
+              <pre><code class="language-css">:root {
+  --gr-hue: 318;
+  --gr-accent: hsl(318 68% 58%);
+  --gr-accent-light: hsl(318 100% 96%);
+  --gr-radius: 16px;
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section" id="scoped-theme">
+          <div>
+            <h2>Scoped themes</h2>
+            <p>Because the system uses CSS variables, you can theme a single component tree without affecting the rest of the page.</p>
+          </div>
+          <div class="docs-demo-grid">
+            <article data-theme-scope>
+              <header>
+                <strong>Default scope</strong>
+                <span data-badge="neutral">shared</span>
+              </header>
+              <p>This card uses the surrounding app theme.</p>
+              <footer><button>Primary</button></footer>
+            </article>
+            <article style="--gr-hue: 28; --gr-accent: hsl(28 80% 45%); --gr-accent-hover: hsl(28 80% 39%); --gr-accent-light: hsl(28 95% 92%); --gr-accent-text: hsl(28 82% 30%);">
+              <header>
+                <strong>Scoped theme</strong>
+                <span data-badge="warning">local</span>
+              </header>
+              <p>This card overrides only its own subtree using inline CSS variables.</p>
+              <footer><button>Primary</button></footer>
+            </article>
+          </div>
+          <pre><code class="language-css">[data-team="marketing"] {
+  --gr-hue: 28;
+  --gr-accent: hsl(28 80% 45%);
+  --gr-accent-light: hsl(28 95% 92%);
+}</code></pre>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <script src="/dist/grain.js"></script>
+  <script src="/docs/assets/docs.js"></script>
+</body>
+</html>

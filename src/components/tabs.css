@@ -1,0 +1,35 @@
+grain-tabs {
+  display: block;
+}
+
+[role="tablist"] {
+  display: flex;
+  gap: var(--gr-space-2);
+  padding: var(--gr-space-1);
+  border: 1px solid var(--gr-border);
+  border-radius: var(--gr-radius-lg);
+  background: var(--gr-bg-subtle);
+  overflow-x: auto;
+}
+
+[role="tab"] {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--gr-text-muted);
+  border-radius: var(--gr-radius);
+  box-shadow: none;
+}
+
+[role="tab"][aria-selected="true"] {
+  background: var(--gr-bg);
+  color: var(--gr-text);
+  box-shadow: var(--gr-shadow-sm);
+}
+
+[role="tabpanel"] {
+  padding: var(--gr-space-5) 0 0;
+}
+
+grain-tabs [role="tabpanel"][hidden] {
+  display: none;
+}

@@ -1,0 +1,27 @@
+[data-avatar] {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--gr-radius-full);
+  background: var(--gr-accent-light);
+  border: 1px solid var(--gr-border);
+  color: var(--gr-accent-text);
+  font-size: var(--gr-text-sm);
+  font-weight: var(--gr-weight-medium);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+[data-avatar][data-size="sm"] {
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--gr-text-xs);
+}
+
+[data-avatar][data-size="lg"] {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: var(--gr-text-base);
+}

@@ -1,0 +1,29 @@
+:where(article, [role="article"], [data-card]) {
+  background: var(--gr-surface);
+  border: 1px solid var(--gr-border);
+  border-radius: var(--gr-radius-lg);
+  padding: var(--gr-space-6);
+  box-shadow: var(--gr-shadow-sm);
+}
+
+:where(a article, article[tabindex], [role="article"][tabindex], [data-card][tabindex]) {
+  transition:
+    box-shadow var(--gr-duration) var(--gr-ease),
+    transform var(--gr-duration) var(--gr-ease);
+  cursor: pointer;
+}
+
+:where(a article:hover, article[tabindex]:hover, [role="article"][tabindex]:hover, [data-card][tabindex]:hover) {
+  box-shadow: var(--gr-shadow-md);
+  transform: translateY(-2px);
+}
+
+:where(article, [role="article"], [data-card]) > header {
+  margin-bottom: var(--gr-space-4);
+}
+
+:where(article, [role="article"], [data-card]) > footer {
+  margin-top: var(--gr-space-4);
+  padding-top: var(--gr-space-4);
+  border-top: 1px solid var(--gr-border);
+}

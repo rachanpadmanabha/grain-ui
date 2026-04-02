@@ -1,0 +1,29 @@
+[data-table-wrap] {
+  overflow-x: auto;
+  border: 1px solid var(--gr-border);
+  border-radius: var(--gr-radius-lg);
+  background: var(--gr-surface);
+}
+
+[data-table-wrap] table {
+  min-width: 36rem;
+}
+
+caption {
+  padding: var(--gr-space-4);
+  text-align: left;
+  font-size: var(--gr-text-sm);
+  color: var(--gr-text-muted);
+}
+
+thead th {
+  white-space: nowrap;
+}
+
+tbody tr[aria-selected="true"] td {
+  background: var(--gr-accent-light);
+}
+
+table[data-density="compact"] :where(th, td) {
+  padding: var(--gr-space-2) var(--gr-space-3);
+}

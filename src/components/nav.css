@@ -1,0 +1,52 @@
+nav {
+  display: flex;
+  align-items: center;
+  gap: var(--gr-space-2);
+  flex-wrap: wrap;
+}
+
+nav :where(ul, ol) {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--gr-space-2);
+  padding: 0;
+  margin: 0;
+}
+
+nav[aria-orientation="vertical"],
+nav[data-layout="vertical"] {
+  align-items: stretch;
+}
+
+nav[aria-orientation="vertical"] :where(ul, ol),
+nav[data-layout="vertical"] :where(ul, ol) {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+nav :where(a, button, summary) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gr-space-2);
+  padding: var(--gr-space-2) var(--gr-space-3);
+  border-radius: var(--gr-radius);
+  color: var(--gr-text-muted);
+  text-decoration: none;
+}
+
+nav :where(a, button, summary):hover {
+  background: var(--gr-bg-subtle);
+  color: var(--gr-text);
+  text-decoration: none;
+}
+
+nav :where(a, button, summary):focus-visible {
+  outline: 2px solid var(--gr-border-focus);
+  outline-offset: 2px;
+}
+
+nav :where(a, button)[aria-current="page"] {
+  background: var(--gr-accent-light);
+  color: var(--gr-accent-text);
+}

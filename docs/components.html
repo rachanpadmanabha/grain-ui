@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components | Grain</title>
+  <meta name="description" content="Component reference for Grain: buttons, forms, cards, alerts, tabs, modals, dropdowns, and more.">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/dist/grain.css">
+  <link rel="stylesheet" href="/docs/assets/docs.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/xml.min.js" defer></script>
+</head>
+<body data-page="components">
+  <header class="docs-topbar">
+    <div class="docs-topbar-inner">
+      <a href="/docs/index.html" class="docs-logo">
+        <span class="logo-mark">◆</span>
+        <strong>Grain</strong>
+      </a>
+      <nav aria-label="Top navigation">
+        <a href="/docs/getting-started.html">Docs</a>
+        <a href="/docs/components.html" aria-current="page">Components</a>
+        <a href="/docs/theming.html">Theming</a>
+        <a href="https://github.com/rachanpadmanabha/lath" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </nav>
+      <div class="docs-toolbar">
+        <button data-sidebar-toggle data-variant="ghost" data-size="sm" class="docs-sidebar-toggle" aria-label="Toggle section menu">Menu</button>
+        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode">◑</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="docs-shell">
+    <aside class="docs-sidebar">
+      <section>
+        <h2>Reference</h2>
+        <nav aria-label="Component index" data-layout="vertical">
+          <a href="#button">Button</a>
+          <a href="#form">Form controls</a>
+          <a href="#card">Card</a>
+          <a href="#badge">Badge</a>
+          <a href="#alert">Alert</a>
+          <a href="#table">Table</a>
+          <a href="#nav">Nav</a>
+          <a href="#tabs">Tabs</a>
+          <a href="#modal">Modal</a>
+          <a href="#tooltip">Tooltip</a>
+          <a href="#progress">Progress</a>
+          <a href="#spinner">Spinner</a>
+          <a href="#avatar">Avatar</a>
+          <a href="#dropdown">Dropdown</a>
+        </nav>
+      </section>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-prose">
+        <header class="docs-page-header">
+          <span class="docs-preview-label">Component library</span>
+          <h1>Semantic components, documented as HTML.</h1>
+          <p class="docs-lead">Each section below includes a live preview, a markup example, and the attributes or ARIA roles that control behavior. Grain tries to stay close to the platform rather than inventing a new API.</p>
+        </header>
+
+        <section class="docs-section" id="button">
+          <h2>Button</h2>
+          <div class="docs-demo">
+            <div class="docs-inline">
+              <button>Primary</button>
+              <button data-variant="outline">Outline</button>
+              <button data-variant="ghost">Ghost</button>
+              <button data-variant="danger">Danger</button>
+              <button data-variant="subtle">Subtle</button>
+              <button aria-busy="true">Loading</button>
+            </div>
+          </div>
+          <pre><code class="language-html">&lt;button&gt;Primary&lt;/button&gt;
+&lt;button data-variant="outline"&gt;Outline&lt;/button&gt;
+&lt;button data-variant="danger"&gt;Delete&lt;/button&gt;
+&lt;button aria-busy="true"&gt;Saving&lt;/button&gt;</code></pre>
+          <div data-table-wrap>
+            <table class="docs-attr-table">
+              <thead><tr><th>Attribute</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><code>data-variant</code></td><td>Visual style: <code>outline</code>, <code>ghost</code>, <code>danger</code>, <code>subtle</code>.</td></tr>
+                <tr><td><code>data-size</code></td><td>Use <code>sm</code> or <code>lg</code> for compact or roomy buttons.</td></tr>
+                <tr><td><code>aria-busy="true"</code></td><td>Adds a spinner and communicates loading state.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="docs-section" id="form">
+          <h2>Form controls</h2>
+          <div class="docs-demo docs-fields">
+            <div>
+              <label for="c-name">Name</label>
+              <input id="c-name" type="text" placeholder="Ada Lovelace">
+            </div>
+            <div>
+              <label for="c-email">Email</label>
+              <input id="c-email" type="email" placeholder="ada@example.com" aria-invalid="true">
+              <small role="alert">Please enter a valid email.</small>
+            </div>
+            <div>
+              <label for="c-role">Role</label>
+              <select id="c-role"><option>Engineer</option><option>Designer</option></select>
+            </div>
+          </div>
+          <pre><code class="language-html">&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input id="email" type="email" aria-invalid="true" /&gt;
+&lt;small role="alert"&gt;Please enter a valid email.&lt;/small&gt;</code></pre>
+          <div data-table-wrap>
+            <table class="docs-attr-table">
+              <thead><tr><th>Attribute</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><code>aria-invalid="true"</code></td><td>Applies the error border treatment without a separate class.</td></tr>
+                <tr><td><code>disabled</code></td><td>Dims controls and removes pointer interactions.</td></tr>
+                <tr><td><code>role="group"</code></td><td>Use on wrappers when related fields belong together outside a <code>&lt;fieldset&gt;</code>.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="docs-section" id="card">
+          <h2>Card</h2>
+          <div class="docs-demo">
+            <article>
+              <header>
+                <strong>API status</strong>
+                <span data-badge="success">healthy</span>
+              </header>
+              <p>Any <code>&lt;article&gt;</code> or <code>[role="article"]</code> gets the default card shell automatically.</p>
+              <footer class="docs-inline">
+                <button data-variant="outline" data-size="sm">Inspect</button>
+                <button data-size="sm">Deploy</button>
+              </footer>
+            </article>
+          </div>
+          <pre><code class="language-html">&lt;article&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;p&gt;Card content&lt;/p&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="badge">
+          <h2>Badge</h2>
+          <div class="docs-demo">
+            <div class="docs-chip-row">
+              <mark>default</mark>
+              <span data-badge="success">success</span>
+              <span data-badge="danger">danger</span>
+              <span data-badge="warning">warning</span>
+              <span data-badge="info">info</span>
+              <span data-badge="neutral">neutral</span>
+              <span data-badge="outline">outline</span>
+            </div>
+          </div>
+          <pre><code class="language-html">&lt;mark&gt;default&lt;/mark&gt;
+&lt;span data-badge="success"&gt;success&lt;/span&gt;
+&lt;span data-badge="outline"&gt;outline&lt;/span&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="alert">
+          <h2>Alert</h2>
+          <div class="docs-demo">
+            <div class="preview-col">
+              <aside role="alert">Payment failed. Check the card details and try again.</aside>
+              <aside role="status">Profile updated successfully.</aside>
+              <aside role="note">Beta features may change before the next release.</aside>
+            </div>
+          </div>
+          <pre><code class="language-html">&lt;aside role="alert"&gt;Something went wrong.&lt;/aside&gt;
+&lt;aside role="status"&gt;Saved successfully.&lt;/aside&gt;
+&lt;aside role="note"&gt;Helpful context.&lt;/aside&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="table">
+          <h2>Table</h2>
+          <div class="docs-demo">
+            <div data-table-wrap>
+              <table>
+                <thead><tr><th>Feature</th><th>Selector</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Compact rows</td><td><code>data-density="compact"</code></td><td><span data-badge="success">ready</span></td></tr>
+                  <tr aria-selected="true"><td>Selected row</td><td><code>aria-selected="true"</code></td><td><span data-badge="info">styled</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <pre><code class="language-html">&lt;div data-table-wrap&gt;
+  &lt;table data-density="compact"&gt;...&lt;/table&gt;
+&lt;/div&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="nav">
+          <h2>Nav</h2>
+          <div class="docs-demo docs-demo-grid">
+            <nav aria-label="Primary">
+              <a href="#" aria-current="page">Overview</a>
+              <a href="#">Projects</a>
+              <a href="#">Billing</a>
+            </nav>
+            <nav aria-label="Settings" data-layout="vertical">
+              <a href="#" aria-current="page">Profile</a>
+              <a href="#">Notifications</a>
+              <a href="#">Security</a>
+            </nav>
+          </div>
+          <pre><code class="language-html">&lt;nav aria-label="Primary"&gt;
+  &lt;a href="#" aria-current="page"&gt;Overview&lt;/a&gt;
+  &lt;a href="#"&gt;Projects&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="tabs">
+          <h2>Tabs</h2>
+          <div class="docs-demo">
+            <grain-tabs>
+              <div role="tablist">
+                <button role="tab">Summary</button>
+                <button role="tab">Usage</button>
+                <button role="tab">Accessibility</button>
+              </div>
+              <div role="tabpanel"><p>Tabs are enhanced by the <code>&lt;grain-tabs&gt;</code> custom element.</p></div>
+              <div role="tabpanel"><p>Use arrow keys or Home/End to move between tabs.</p></div>
+              <div role="tabpanel"><p>Panels get the right <code>aria-labelledby</code> and <code>hidden</code> state automatically.</p></div>
+            </grain-tabs>
+          </div>
+          <pre><code class="language-html">&lt;grain-tabs&gt;
+  &lt;div role="tablist"&gt;
+    &lt;button role="tab"&gt;Summary&lt;/button&gt;
+    &lt;button role="tab"&gt;Usage&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel"&gt;...&lt;/div&gt;
+  &lt;div role="tabpanel"&gt;...&lt;/div&gt;
+&lt;/grain-tabs&gt;</code></pre>
+          <div data-table-wrap>
+            <table class="docs-attr-table">
+              <thead><tr><th>Key / attribute</th><th>Behavior</th></tr></thead>
+              <tbody>
+                <tr><td><code>role="tablist"</code></td><td>Defines the tab group container.</td></tr>
+                <tr><td><code>role="tab"</code></td><td>Receives <code>aria-selected</code> and managed <code>tabindex</code>.</td></tr>
+                <tr><td><kbd class="docs-kbd">←</kbd> <kbd class="docs-kbd">→</kbd> <kbd class="docs-kbd">Home</kbd> <kbd class="docs-kbd">End</kbd></td><td>Keyboard navigation between tabs.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="docs-section" id="modal">
+          <h2>Modal</h2>
+          <div class="docs-demo">
+            <button data-modal="components-modal">Open modal</button>
+            <grain-modal id="components-modal">
+              <dialog>
+                <header>
+                  <strong>Deploy now?</strong>
+                  <button data-close data-variant="ghost" data-size="sm" aria-label="Close">✕</button>
+                </header>
+                <section>
+                  <p>This helper wires trigger buttons to a native dialog, keeps backdrop click behavior simple, and respects browser focus handling.</p>
+                </section>
+                <footer>
+                  <button data-close data-variant="outline">Cancel</button>
+                  <button>Deploy</button>
+                </footer>
+              </dialog>
+            </grain-modal>
+          </div>
+          <pre><code class="language-html">&lt;button data-modal="billing-modal"&gt;Open modal&lt;/button&gt;
+&lt;grain-modal id="billing-modal"&gt;
+  &lt;dialog&gt;...&lt;/dialog&gt;
+&lt;/grain-modal&gt;</code></pre>
+          <div data-table-wrap>
+            <table class="docs-attr-table">
+              <thead><tr><th>Key / attribute</th><th>Behavior</th></tr></thead>
+              <tbody>
+                <tr><td><code>data-modal="id"</code></td><td>Associates a trigger with a matching <code>&lt;grain-modal id="..."&gt;</code>.</td></tr>
+                <tr><td><code>data-close</code></td><td>Closes the dialog when applied to a button inside the modal.</td></tr>
+                <tr><td><kbd class="docs-kbd">Esc</kbd></td><td>Handled by the native dialog element to close the modal.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="docs-section" id="tooltip">
+          <h2>Tooltip</h2>
+          <div class="docs-demo">
+            <div class="docs-inline">
+              <button data-tooltip="A subtle tooltip powered by a data attribute.">Hover me</button>
+              <button data-variant="outline" data-tooltip="Placed below." data-side="bottom">Bottom tooltip</button>
+            </div>
+          </div>
+          <pre><code class="language-html">&lt;button data-tooltip="Copied to clipboard."&gt;Copy&lt;/button&gt;
+&lt;button data-tooltip="Placed below." data-side="bottom"&gt;Details&lt;/button&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="progress">
+          <h2>Progress</h2>
+          <div class="docs-demo">
+            <div class="preview-col">
+              <progress value="32" max="100"></progress>
+              <progress value="68" max="100" data-tone="success"></progress>
+              <progress value="82" max="100" data-tone="warning"></progress>
+            </div>
+          </div>
+          <pre><code class="language-html">&lt;progress value="32" max="100"&gt;&lt;/progress&gt;
+&lt;progress value="68" max="100" data-tone="success"&gt;&lt;/progress&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="spinner">
+          <h2>Spinner</h2>
+          <div class="docs-demo">
+            <div class="docs-inline">
+              <span data-spinner aria-hidden="true"></span>
+              <span data-spinner data-size="lg" aria-hidden="true"></span>
+            </div>
+          </div>
+          <pre><code class="language-html">&lt;span data-spinner aria-hidden="true"&gt;&lt;/span&gt;
+&lt;span data-spinner data-size="lg" aria-hidden="true"&gt;&lt;/span&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="avatar">
+          <h2>Avatar</h2>
+          <div class="docs-demo">
+            <div class="docs-inline">
+              <span data-avatar>RK</span>
+              <span data-avatar data-size="sm">UI</span>
+              <span data-avatar data-size="lg">GP</span>
+            </div>
+          </div>
+          <pre><code class="language-html">&lt;span data-avatar&gt;RK&lt;/span&gt;
+&lt;span data-avatar data-size="lg"&gt;GP&lt;/span&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="dropdown">
+          <h2>Dropdown</h2>
+          <div class="docs-demo">
+            <grain-dropdown>
+              <details>
+                <summary>Actions</summary>
+                <div role="menu">
+                  <button type="button">Rename</button>
+                  <button type="button">Duplicate</button>
+                  <div role="separator"></div>
+                  <button type="button">Archive</button>
+                </div>
+              </details>
+            </grain-dropdown>
+          </div>
+          <pre><code class="language-html">&lt;grain-dropdown&gt;
+  &lt;details&gt;
+    &lt;summary&gt;Actions&lt;/summary&gt;
+    &lt;div role="menu"&gt;
+      &lt;button type="button"&gt;Rename&lt;/button&gt;
+      &lt;button type="button"&gt;Duplicate&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/details&gt;
+&lt;/grain-dropdown&gt;</code></pre>
+          <div data-table-wrap>
+            <table class="docs-attr-table">
+              <thead><tr><th>Key / attribute</th><th>Behavior</th></tr></thead>
+              <tbody>
+                <tr><td><code>role="menu"</code></td><td>Identifies the menu container and enables keyboard targeting.</td></tr>
+                <tr><td><kbd class="docs-kbd">↓</kbd> <kbd class="docs-kbd">↑</kbd></td><td>Open the menu and move between items.</td></tr>
+                <tr><td><kbd class="docs-kbd">Esc</kbd></td><td>Closes the menu and returns focus to the summary trigger.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <script src="/dist/grain.js"></script>
+  <script src="/docs/assets/docs.js"></script>
+</body>
+</html>

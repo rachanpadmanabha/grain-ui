@@ -1,0 +1,48 @@
+mark,
+[data-badge] {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gr-space-1);
+  padding: 0.1em 0.55em;
+  font-size: var(--gr-text-xs);
+  font-weight: var(--gr-weight-medium);
+  border-radius: var(--gr-radius-full);
+  border: 1px solid transparent;
+  background: var(--gr-accent-light);
+  color: var(--gr-accent-text);
+}
+
+mark {
+  text-decoration: none;
+}
+
+[data-badge="success"] {
+  background: var(--gr-success-light);
+  color: var(--gr-success);
+}
+
+[data-badge="danger"] {
+  background: var(--gr-danger-light);
+  color: var(--gr-danger);
+}
+
+[data-badge="warning"] {
+  background: var(--gr-warning-light);
+  color: var(--gr-warning);
+}
+
+[data-badge="info"] {
+  background: var(--gr-info-light);
+  color: var(--gr-info);
+}
+
+[data-badge="neutral"] {
+  background: var(--gr-bg-muted);
+  color: var(--gr-text-muted);
+}
+
+[data-badge="outline"] {
+  background: transparent;
+  border-color: var(--gr-border);
+  color: var(--gr-text);
+}

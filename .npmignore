@@ -1,0 +1,10 @@
+docs/
+.github/
+*.md
+!README.md
+!CHANGELOG.md
+Makefile
+node_modules/
+public/
+package-lock.json
+src/assets/

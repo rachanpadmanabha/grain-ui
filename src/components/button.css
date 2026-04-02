@@ -1,0 +1,110 @@
+:where(button, [role="button"], input[type="submit"], input[type="button"]) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gr-space-2);
+  padding: var(--gr-space-2) var(--gr-space-4);
+  font-size: var(--gr-text-sm);
+  font-weight: var(--gr-weight-medium);
+  font-family: var(--gr-font);
+  line-height: 1.2;
+  text-decoration: none;
+  border-radius: var(--gr-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background var(--gr-duration) var(--gr-ease),
+    border-color var(--gr-duration) var(--gr-ease),
+    box-shadow var(--gr-duration) var(--gr-ease),
+    color var(--gr-duration) var(--gr-ease),
+    transform var(--gr-duration) var(--gr-ease);
+  white-space: nowrap;
+  background: var(--gr-accent);
+  color: var(--gr-text-inverse);
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"]):hover {
+  background: var(--gr-accent-hover);
+  text-decoration: none;
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"]):active {
+  transform: translateY(1px);
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"]):focus-visible {
+  outline: 2px solid var(--gr-border-focus);
+  outline-offset: 2px;
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"]):disabled,
+:where(button, [role="button"], input[type="submit"], input[type="button"])[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="outline"] {
+  background: transparent;
+  border-color: var(--gr-border);
+  color: var(--gr-text);
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="outline"]:hover {
+  background: var(--gr-bg-subtle);
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="ghost"] {
+  background: transparent;
+  color: var(--gr-text);
+  border-color: transparent;
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="ghost"]:hover {
+  background: var(--gr-bg-muted);
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="danger"] {
+  background: var(--gr-danger);
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="danger"]:hover {
+  filter: brightness(0.94);
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="subtle"] {
+  background: var(--gr-accent-light);
+  color: var(--gr-accent-text);
+  border-color: transparent;
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"])[data-size="sm"] {
+  padding: var(--gr-space-1) var(--gr-space-3);
+  font-size: var(--gr-text-xs);
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"])[data-size="lg"] {
+  padding: var(--gr-space-3) var(--gr-space-6);
+  font-size: var(--gr-text-base);
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"])[aria-busy="true"] {
+  opacity: 0.72;
+  cursor: wait;
+}
+
+:where(button, [role="button"], input[type="submit"], input[type="button"])[aria-busy="true"]::after {
+  content: "";
+  width: 0.9em;
+  height: 0.9em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: gr-spin 0.6s linear infinite;
+}
+
+@keyframes gr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

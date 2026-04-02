@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grain | Semantic-first UI library</title>
+  <meta name="description" content="Grain is a semantic-first UI library built from native HTML, CSS custom properties, and tiny Web Components.">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/dist/grain.css">
+  <link rel="stylesheet" href="/docs/assets/docs.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/xml.min.js" defer></script>
+</head>
+<body data-page="home">
+  <header class="docs-topbar">
+    <div class="docs-topbar-inner">
+      <a href="/docs/index.html" class="docs-logo">
+        <span class="logo-mark">◆</span>
+        <strong>Grain</strong>
+      </a>
+      <nav aria-label="Top navigation">
+        <a href="/docs/getting-started.html">Docs</a>
+        <a href="/docs/components.html">Components</a>
+        <a href="/docs/theming.html">Theming</a>
+        <a href="https://github.com/rachanpadmanabha/lath" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </nav>
+      <div class="docs-toolbar">
+        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode">◑</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="docs-home">
+    <section class="docs-hero">
+      <div class="hero-copy">
+        <div class="hero-eyebrow">
+          <mark>v0.1.0</mark>
+          <span>MIT License</span>
+          <span>CSS + Web Components</span>
+        </div>
+        <h1>Semantic UI without the framework tax.</h1>
+        <p class="hero-sub">Grain styles the HTML you already write, adds tiny browser-native behavior where it helps, and stays fully themeable through plain CSS variables.</p>
+        <div class="hero-actions">
+          <a href="/docs/getting-started.html" role="button">Get started →</a>
+          <a href="/docs/components.html" role="button" data-variant="outline">Browse components</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <span class="docs-preview-label">Quick start</span>
+        <p>Two distributable files, semantic primitives, and tiny custom elements for the interactive pieces.</p>
+        <pre><code>npm install grain-ui
+
+import "grain-ui/css";
+import "grain-ui";</code></pre>
+        <ul class="hero-panel-list">
+          <li>Native HTML elements are the public API</li>
+          <li>Theme everything from <code>:root</code> tokens</li>
+          <li>Works in plain HTML, React, Vue, Astro, and Svelte</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="docs-features">
+      <article>
+        <span class="docs-preview-label">01</span>
+        <h3>Semantic-first</h3>
+        <p>A <code>&lt;button&gt;</code> looks right. A <code>&lt;dialog&gt;</code> works. Attributes like <code>aria-invalid</code> and <code>data-variant</code> drive state. No class soup.</p>
+      </article>
+      <article>
+        <span class="docs-preview-label">02</span>
+        <h3>Tiny by design</h3>
+        <p>Grain ships as one CSS file and one JS file. You can use the whole library with a pair of tags and no build step at all.</p>
+      </article>
+      <article>
+        <span class="docs-preview-label">03</span>
+        <h3>Zero dependencies</h3>
+        <p>No React lock-in, no utility compiler, no preprocessors. Include it from a CDN or install it from npm and go.</p>
+      </article>
+      <article>
+        <span class="docs-preview-label">04</span>
+        <h3>Themeable with tokens</h3>
+        <p>Override a few CSS variables or replace every token. The library is designed to be rethemed from <code>:root</code>.</p>
+      </article>
+      <article>
+        <span class="docs-preview-label">05</span>
+        <h3>Dark mode built in</h3>
+        <p>Grain respects <code>prefers-color-scheme</code> automatically and also supports explicit <code>data-theme</code> overrides.</p>
+      </article>
+      <article>
+        <span class="docs-preview-label">06</span>
+        <h3>Framework-friendly</h3>
+        <p>Custom elements for tabs, modals, dropdowns, and toasts work the same way in plain HTML, React, Vue, Astro, and Svelte.</p>
+      </article>
+    </section>
+
+    <section class="docs-preview-strip">
+      <div class="docs-section-heading">
+        <span class="docs-preview-label">Live preview</span>
+        <h2>The core library, shown in context.</h2>
+        <p class="gr-text-muted">A smaller, sharper slice of Grain. The full reference lives on the components page.</p>
+        <div class="docs-inline">
+          <a href="/docs/components.html" role="button" data-variant="outline">See all components</a>
+        </div>
+      </div>
+
+      <div class="preview-showcase">
+        <article class="preview-module">
+          <header>
+            <div>
+              <span class="docs-preview-label">Primitives</span>
+              <h3>Actions and status</h3>
+              <p>Default buttons, variants, and badges without any component classes.</p>
+            </div>
+            <span data-badge="info">semantic</span>
+          </header>
+          <div class="preview-row">
+            <button>Primary</button>
+            <button data-variant="outline">Outline</button>
+            <button data-variant="ghost">Ghost</button>
+            <button data-variant="danger">Danger</button>
+            <button aria-busy="true">Loading</button>
+          </div>
+          <div class="preview-row">
+            <mark>default</mark>
+            <span data-badge="success">success</span>
+            <span data-badge="warning">warning</span>
+            <span data-badge="info">info</span>
+            <span data-badge="outline">outline</span>
+          </div>
+        </article>
+
+        <article class="preview-module">
+          <header>
+            <div>
+              <span class="docs-preview-label">Feedback</span>
+              <h3>Alerts and toasts</h3>
+              <p>Role-driven status blocks plus lightweight notifications when you need motion.</p>
+            </div>
+            <span data-badge="success">live</span>
+          </header>
+          <div class="preview-col">
+            <aside role="alert">Something went wrong. Check your input and try again.</aside>
+            <aside role="status">Changes saved successfully.</aside>
+            <aside role="note">This action cannot be undone once confirmed.</aside>
+          </div>
+          <div class="preview-row">
+            <button onclick="GrainToast.show('Copied to clipboard!')">Show toast</button>
+            <button data-variant="outline" onclick="GrainToast.show('Something went wrong.', { type: 'error' })">Error toast</button>
+          </div>
+        </article>
+
+        <article class="preview-module">
+          <header>
+            <div>
+              <span class="docs-preview-label">Forms</span>
+              <h3>Validation states</h3>
+              <p>Labels, inputs, helpers, and error states styled through semantics and ARIA.</p>
+            </div>
+            <span data-badge="danger">aria</span>
+          </header>
+          <div class="preview-form-row">
+            <div>
+              <label for="home-name">Name</label>
+              <input id="home-name" type="text" placeholder="Jane Doe">
+            </div>
+            <div>
+              <label for="home-email">Email <span data-badge="danger">required</span></label>
+              <input id="home-email" type="email" placeholder="jane@example.com" aria-invalid="true">
+              <small role="alert">Please enter a valid email address</small>
+            </div>
+            <div>
+              <label for="home-role">Role</label>
+              <select id="home-role">
+                <option>Developer</option>
+                <option>Designer</option>
+                <option>Product</option>
+              </select>
+            </div>
+          </div>
+        </article>
+
+        <article class="preview-module preview-module--wide">
+          <header>
+            <div>
+              <span class="docs-preview-label">Layout</span>
+              <h3>Cards and dialog flows</h3>
+              <p>Articles become cards automatically, and the modal helper layers behavior onto the native dialog element.</p>
+            </div>
+            <button data-modal="home-modal" data-size="sm">Open modal</button>
+          </header>
+          <div class="preview-cards">
+            <article>
+              <header>
+                <strong>Project Alpha</strong>
+                <span data-badge="success">Active</span>
+              </header>
+              <p>A demonstration card component using a plain <code>&lt;article&gt;</code> element with Grain's semantic styling applied automatically.</p>
+              <footer class="preview-row">
+                <button data-variant="outline" data-size="sm">View</button>
+                <button data-size="sm">Edit</button>
+              </footer>
+            </article>
+            <article>
+              <header>
+                <strong>API Keys</strong>
+                <span data-badge="warning">2 expiring</span>
+              </header>
+              <p>Manage credentials and rotate access tokens without pulling in a full design system.</p>
+              <footer class="preview-row">
+                <button data-variant="ghost" data-size="sm">Revoke all</button>
+                <button data-size="sm">Generate key</button>
+              </footer>
+            </article>
+          </div>
+        </article>
+
+        <article class="preview-module preview-module--wide">
+          <header>
+            <div>
+              <span class="docs-preview-label">Interactive</span>
+              <h3>Tabs and data views</h3>
+              <p>Custom elements only where they add value. Everything else stays native and readable.</p>
+            </div>
+            <span data-badge="neutral">small JS</span>
+          </header>
+          <grain-tabs>
+            <div role="tablist">
+              <button role="tab">Overview</button>
+              <button role="tab">Usage</button>
+              <button role="tab">API</button>
+            </div>
+            <div role="tabpanel"><p>This is the overview panel content.</p></div>
+            <div role="tabpanel"><p>Usage instructions go here.</p></div>
+            <div role="tabpanel"><p>API reference content goes here.</p></div>
+          </grain-tabs>
+          <div data-table-wrap>
+            <table>
+              <thead>
+                <tr><th>Component</th><th>Element</th><th>Attribute</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Button</td><td><code>&lt;button&gt;</code></td><td><code>data-variant</code></td><td><span data-badge="success">Stable</span></td></tr>
+                <tr><td>Alert</td><td><code>&lt;aside&gt;</code></td><td><code>role</code></td><td><span data-badge="success">Stable</span></td></tr>
+                <tr><td>Modal</td><td><code>&lt;dialog&gt;</code></td><td><code>data-modal</code></td><td><span data-badge="success">Stable</span></td></tr>
+                <tr><td>Tabs</td><td><code>grain-tabs</code></td><td><code>role="tab"</code></td><td><span data-badge="info">Beta</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+
+      <grain-modal id="home-modal">
+        <dialog>
+          <header>
+            <strong>Confirm action</strong>
+            <button data-variant="ghost" data-size="sm" data-close aria-label="Close">✕</button>
+          </header>
+          <section>
+            <p>Are you sure you want to delete this item? This action cannot be undone.</p>
+          </section>
+          <footer>
+            <button data-variant="outline" data-close>Cancel</button>
+            <button data-variant="danger">Delete</button>
+          </footer>
+        </dialog>
+      </grain-modal>
+    </section>
+
+    <section class="docs-theming-teaser">
+      <div class="docs-section-heading">
+        <span class="docs-preview-label">Theming</span>
+        <h2>One hue variable, infinite themes.</h2>
+        <p>The default palette derives from <code>--gr-hue</code>. Shift the system in place, then layer more exact token overrides when you need them.</p>
+      </div>
+      <div class="docs-theme-lab">
+        <div class="docs-demo">
+          <label for="home-hue">Hue demo <span data-badge="neutral"><output data-hue-output="home-hue">173</output></span></label>
+          <input id="home-hue" data-hue-control type="range" min="0" max="360" value="173">
+          <p class="gr-text-muted">Override radius, fonts, surfaces, focus rings, and dark mode tokens after the hue if you need a more branded result.</p>
+        </div>
+        <div class="docs-theme-preview-grid">
+          <article>
+            <header>
+              <strong>Default theme</strong>
+              <span data-badge="neutral">shared</span>
+            </header>
+            <p>Default tokens keep the UI quiet and readable.</p>
+            <footer class="preview-row">
+              <button>Primary</button>
+              <button data-variant="outline">Outline</button>
+            </footer>
+          </article>
+          <article style="--gr-hue: 28; --gr-accent: hsl(28 80% 45%); --gr-accent-hover: hsl(28 80% 39%); --gr-accent-light: hsl(28 95% 92%); --gr-accent-text: hsl(28 82% 30%);">
+            <header>
+              <strong>Scoped theme</strong>
+              <span data-badge="warning">local</span>
+            </header>
+            <p>This panel only overrides its own subtree with CSS variables.</p>
+            <footer class="preview-row">
+              <button>Primary</button>
+              <button data-variant="outline">Outline</button>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="docs-footer">
+      <div>
+        <span class="logo-mark">◆</span> <strong>Grain</strong>
+        <span class="gr-text-muted">semantic-first UI, MIT licensed</span>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="/docs/getting-started.html">Docs</a>
+        <a href="/docs/components.html">Components</a>
+        <a href="/docs/theming.html">Theming</a>
+        <a href="https://github.com/rachanpadmanabha/lath" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </footer>
+  </main>
+
+  <script src="/dist/grain.js"></script>
+  <script src="/docs/assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started | Grain</title>
+  <meta name="description" content="Install Grain from a CDN or npm, then build your first page with semantic HTML and tiny custom elements.">
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/dist/grain.css">
+  <link rel="stylesheet" href="/docs/assets/docs.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/xml.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/javascript.min.js" defer></script>
+</head>
+<body data-page="getting-started">
+  <header class="docs-topbar">
+    <div class="docs-topbar-inner">
+      <a href="/docs/index.html" class="docs-logo">
+        <span class="logo-mark">◆</span>
+        <strong>Grain</strong>
+      </a>
+      <nav aria-label="Top navigation">
+        <a href="/docs/getting-started.html" aria-current="page">Docs</a>
+        <a href="/docs/components.html">Components</a>
+        <a href="/docs/theming.html">Theming</a>
+        <a href="https://github.com/rachanpadmanabha/lath" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </nav>
+      <div class="docs-toolbar">
+        <button data-sidebar-toggle data-variant="ghost" data-size="sm" class="docs-sidebar-toggle" aria-label="Toggle section menu">Menu</button>
+        <button data-theme-toggle data-variant="ghost" data-size="sm" aria-label="Toggle dark mode">◑</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="docs-shell">
+    <aside class="docs-sidebar">
+      <section>
+        <h2>Getting started</h2>
+        <nav aria-label="Getting started sections" data-layout="vertical">
+          <a href="#install">Install</a>
+          <a href="#first-page">Your first page</a>
+          <a href="#first-components">Buttons, forms, modals</a>
+          <a href="#customizing">Customizing colors</a>
+          <a href="#web-components">Using Web Components</a>
+          <a href="#frameworks">Framework notes</a>
+        </nav>
+      </section>
+      <section>
+        <h2>Next</h2>
+        <nav aria-label="Secondary navigation" data-layout="vertical">
+          <a href="/docs/components.html">Browse components →</a>
+          <a href="/docs/theming.html">Read theming guide →</a>
+        </nav>
+      </section>
+    </aside>
+
+    <main class="docs-main">
+      <article class="docs-prose">
+        <header class="docs-page-header">
+          <span class="docs-preview-label">Quick start</span>
+          <h1>Get Grain on the page in minutes.</h1>
+          <p class="docs-lead">You can use Grain as plain old CSS and JavaScript, or import it once from npm and let the browser do the rest. The semantic HTML you already know is the public API.</p>
+        </header>
+
+        <section class="docs-section" id="install">
+          <div>
+            <h2>1. Install</h2>
+            <p>Use the CDN snippet for prototypes or the npm package for apps and design systems.</p>
+          </div>
+          <div class="docs-snippet-grid">
+            <div class="docs-demo">
+              <span class="docs-preview-label">CDN</span>
+              <pre><code class="language-html">&lt;link rel="stylesheet" href="https://unpkg.com/grain-ui/dist/grain.min.css"&gt;
+&lt;script src="https://unpkg.com/grain-ui/dist/grain.min.js" defer&gt;&lt;/script&gt;</code></pre>
+            </div>
+            <div class="docs-demo">
+              <span class="docs-preview-label">npm</span>
+              <pre><code class="language-javascript">npm install grain-ui
+
+import "grain-ui/css";
+import "grain-ui";</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section" id="first-page">
+          <div>
+            <h2>2. Your first page</h2>
+            <p>Start with native elements. Grain styles them semantically, so your markup stays clean and portable.</p>
+          </div>
+          <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="stylesheet" href="https://unpkg.com/grain-ui/dist/grain.min.css" /&gt;
+    &lt;script src="https://unpkg.com/grain-ui/dist/grain.min.js" defer&gt;&lt;/script&gt;
+    &lt;title&gt;My Grain page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main style="max-width: 48rem; margin: 0 auto; padding: 2rem;"&gt;
+      &lt;h1&gt;Hello, Grain&lt;/h1&gt;
+      &lt;p&gt;This page uses only semantic HTML.&lt;/p&gt;
+      &lt;button&gt;Primary action&lt;/button&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="first-components">
+          <div>
+            <h2>3. Add a button, a form, and a modal</h2>
+            <p>Variants and validation are driven by attributes, not component classes.</p>
+          </div>
+          <div class="docs-demo">
+            <div class="docs-fields">
+              <div>
+                <label for="gs-name">Name</label>
+                <input id="gs-name" type="text" placeholder="Taylor">
+              </div>
+              <div>
+                <label for="gs-email">Email</label>
+                <input id="gs-email" type="email" placeholder="taylor@example.com" aria-invalid="true">
+                <small role="alert">A valid email is required.</small>
+              </div>
+            </div>
+            <div class="docs-inline">
+              <button>Save profile</button>
+              <button data-variant="outline">Cancel</button>
+              <button data-modal="getting-started-modal">Open modal</button>
+            </div>
+            <grain-modal id="getting-started-modal">
+              <dialog>
+                <header>
+                  <strong>Ship this change?</strong>
+                  <button data-variant="ghost" data-size="sm" data-close aria-label="Close">✕</button>
+                </header>
+                <section>
+                  <p>The modal uses the native <code>&lt;dialog&gt;</code> element and closes on backdrop click or <kbd class="docs-kbd">Esc</kbd>.</p>
+                </section>
+                <footer>
+                  <button data-variant="outline" data-close>Cancel</button>
+                  <button>Confirm</button>
+                </footer>
+              </dialog>
+            </grain-modal>
+          </div>
+          <pre><code class="language-html">&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input id="email" type="email" aria-invalid="true" /&gt;
+&lt;small role="alert"&gt;A valid email is required.&lt;/small&gt;
+
+&lt;button data-modal="demo-modal"&gt;Open modal&lt;/button&gt;
+&lt;grain-modal id="demo-modal"&gt;
+  &lt;dialog&gt;
+    &lt;header&gt;
+      &lt;strong&gt;Confirm action&lt;/strong&gt;
+      &lt;button data-close data-variant="ghost"&gt;✕&lt;/button&gt;
+    &lt;/header&gt;
+    &lt;section&gt;...&lt;/section&gt;
+    &lt;footer&gt;
+      &lt;button data-close data-variant="outline"&gt;Cancel&lt;/button&gt;
+      &lt;button&gt;Confirm&lt;/button&gt;
+    &lt;/footer&gt;
+  &lt;/dialog&gt;
+&lt;/grain-modal&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="customizing">
+          <div>
+            <h2>4. Customize colors</h2>
+            <p>Most themes start by changing the hue, accent, and surface tokens. You can override them globally or on a subtree.</p>
+          </div>
+          <pre><code class="language-css">:root {
+  --gr-hue: 35;
+  --gr-accent: hsl(35 86% 46%);
+  --gr-accent-hover: hsl(35 86% 40%);
+  --gr-accent-light: hsl(35 88% 93%);
+  --gr-radius: 12px;
+}</code></pre>
+          <div class="docs-note">
+            <p><strong>Tip:</strong> use <code>src/tokens.css</code> as the single source of truth. That file is the contract between Grain and your theme.</p>
+          </div>
+        </section>
+
+        <section class="docs-section" id="web-components">
+          <div>
+            <h2>5. Use the Web Components when you need behavior</h2>
+            <p>Tabs, toasts, dropdowns, and modal helpers are custom elements with shadow DOM turned off, so they inherit your global styles naturally.</p>
+          </div>
+          <div class="docs-demo">
+            <div class="docs-inline">
+              <button onclick="GrainToast.show('Saved successfully.')">Show toast</button>
+            </div>
+            <grain-tabs>
+              <div role="tablist">
+                <button role="tab">Overview</button>
+                <button role="tab">Usage</button>
+              </div>
+              <div role="tabpanel"><p>Tabs are progressively enhanced and keyboard navigable.</p></div>
+              <div role="tabpanel"><p>Use arrow keys, Home, End, Enter, or Space.</p></div>
+            </grain-tabs>
+          </div>
+          <pre><code class="language-html">&lt;grain-tabs&gt;
+  &lt;div role="tablist"&gt;
+    &lt;button role="tab"&gt;Overview&lt;/button&gt;
+    &lt;button role="tab"&gt;Usage&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div role="tabpanel"&gt;...&lt;/div&gt;
+  &lt;div role="tabpanel"&gt;...&lt;/div&gt;
+&lt;/grain-tabs&gt;
+
+&lt;button onclick="GrainToast.show('Saved successfully.')"&gt;Show toast&lt;/button&gt;</code></pre>
+        </section>
+
+        <section class="docs-section" id="frameworks">
+          <div>
+            <h2>6. Framework integration notes</h2>
+            <p>Grain works best when you let the browser keep doing browser things.</p>
+          </div>
+          <div class="docs-demo-grid">
+            <article>
+              <h3>React</h3>
+              <p>Import the CSS once, import <code>grain-ui</code> for side effects, and use native props like <code>aria-invalid</code> directly.</p>
+            </article>
+            <article>
+              <h3>Vue / Nuxt</h3>
+              <p>Register the stylesheet globally. Custom elements work out of the box in Vue 3, especially when you keep them as native tags.</p>
+            </article>
+            <article>
+              <h3>Svelte / Astro</h3>
+              <p>Grain fits naturally because the markup stays close to the platform. Import once in your layout and use semantic HTML in components.</p>
+            </article>
+          </div>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <script src="/dist/grain.js"></script>
+  <script src="/docs/assets/docs.js"></script>
+</body>
+</html>

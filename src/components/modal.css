@@ -1,0 +1,60 @@
+dialog {
+  padding: 0;
+  border: 1px solid var(--gr-border);
+  border-radius: var(--gr-radius-xl);
+  background: var(--gr-bg);
+  box-shadow: var(--gr-shadow-lg);
+  color: var(--gr-text);
+  max-width: min(90vw, 520px);
+  width: 100%;
+}
+
+dialog[open] {
+  animation: gr-dialog-in var(--gr-duration-slow) var(--gr-ease);
+}
+
+dialog::backdrop {
+  background: hsl(0 0% 0% / 0.4);
+  backdrop-filter: blur(4px);
+}
+
+dialog > header {
+  padding: var(--gr-space-5) var(--gr-space-6) var(--gr-space-4);
+  border-bottom: 1px solid var(--gr-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gr-space-3);
+}
+
+dialog > main,
+dialog > section,
+dialog > form > section {
+  padding: var(--gr-space-6);
+}
+
+dialog > footer,
+dialog > form > footer {
+  padding: var(--gr-space-4) var(--gr-space-6);
+  border-top: 1px solid var(--gr-border);
+  display: flex;
+  gap: var(--gr-space-3);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+dialog > form {
+  margin: 0;
+}
+
+@keyframes gr-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

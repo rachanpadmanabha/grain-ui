@@ -1,0 +1,81 @@
+:where(details[data-dropdown], grain-dropdown details) {
+  position: relative;
+  display: inline-block;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+:where(details[data-dropdown], grain-dropdown details) > summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gr-space-2);
+  padding: var(--gr-space-2) var(--gr-space-4);
+  border: 1px solid var(--gr-border);
+  border-radius: var(--gr-radius);
+  background: var(--gr-bg);
+  color: var(--gr-text);
+}
+
+:where(details[data-dropdown], grain-dropdown details) > summary::before {
+  content: none;
+}
+
+:where(details[data-dropdown], grain-dropdown details) > summary::after {
+  content: "▾";
+  color: var(--gr-text-muted);
+  font-size: 0.85em;
+}
+
+:where(details[data-dropdown], grain-dropdown details) > summary:focus-visible {
+  outline: 2px solid var(--gr-border-focus);
+  outline-offset: 2px;
+}
+
+:where(details[data-dropdown], grain-dropdown details) > :where([role="menu"], ul, nav) {
+  position: absolute;
+  top: calc(100% + var(--gr-space-2));
+  right: 0;
+  min-width: 12rem;
+  margin: 0;
+  padding: var(--gr-space-2);
+  list-style: none;
+  background: var(--gr-surface);
+  border: 1px solid var(--gr-border);
+  border-radius: var(--gr-radius-lg);
+  box-shadow: var(--gr-shadow-md);
+  display: grid;
+  gap: var(--gr-space-1);
+  z-index: 50;
+}
+
+:where(details[data-dropdown], grain-dropdown details):not([open]) > :where([role="menu"], ul, nav) {
+  display: none;
+}
+
+:where(details[data-dropdown], grain-dropdown details) :where(a, button, [role="menuitem"]) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: var(--gr-space-2);
+  padding: var(--gr-space-2) var(--gr-space-3);
+  border-radius: var(--gr-radius);
+  color: var(--gr-text);
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  font: inherit;
+}
+
+:where(details[data-dropdown], grain-dropdown details) :where(a, button, [role="menuitem"]):hover,
+:where(details[data-dropdown], grain-dropdown details) :where(a, button, [role="menuitem"]):focus-visible {
+  background: var(--gr-bg-subtle);
+  outline: none;
+}
+
+:where(details[data-dropdown], grain-dropdown details) [role="separator"] {
+  height: 1px;
+  background: var(--gr-border);
+  margin: var(--gr-space-1) 0;
+}

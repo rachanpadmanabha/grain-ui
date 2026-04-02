@@ -1,0 +1,38 @@
+progress {
+  width: 100%;
+  height: 0.7rem;
+  appearance: none;
+  border: none;
+  border-radius: var(--gr-radius-full);
+  overflow: hidden;
+  background: var(--gr-bg-muted);
+}
+
+progress::-webkit-progress-bar {
+  background: var(--gr-bg-muted);
+}
+
+progress::-webkit-progress-value {
+  background: var(--gr-accent);
+  border-radius: var(--gr-radius-full);
+}
+
+progress::-moz-progress-bar {
+  background: var(--gr-accent);
+  border-radius: var(--gr-radius-full);
+}
+
+progress[data-tone="success"]::-webkit-progress-value,
+progress[data-tone="success"]::-moz-progress-bar {
+  background: var(--gr-success);
+}
+
+progress[data-tone="warning"]::-webkit-progress-value,
+progress[data-tone="warning"]::-moz-progress-bar {
+  background: var(--gr-warning);
+}
+
+progress[data-tone="danger"]::-webkit-progress-value,
+progress[data-tone="danger"]::-moz-progress-bar {
+  background: var(--gr-danger);
+}
