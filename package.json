@@ -46,7 +46,7 @@
   ],
   "scripts": {
     "build": "make all",
-    "dev": "make all && npx serve .",
+    "dev": "make all && npx serve docs",
     "prepublishOnly": "make all",
     "size": "ls -lh dist"
   },
