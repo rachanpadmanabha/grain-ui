@@ -151,34 +151,6 @@ svg {
   height: auto;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--gr-text-sm);
-}
-
-th,
-td {
-  padding: var(--gr-space-3) var(--gr-space-4);
-  border-bottom: 1px solid var(--gr-border);
-  text-align: left;
-  vertical-align: top;
-}
-
-th {
-  font-weight: var(--gr-weight-medium);
-  color: var(--gr-text-muted);
-  background: var(--gr-bg-subtle);
-}
-
-tr:last-child td {
-  border-bottom: none;
-}
-
-tbody tr:hover td {
-  background: var(--gr-bg-subtle);
-}
-
 details {
   border-radius: var(--gr-radius);
   padding: var(--gr-space-4);

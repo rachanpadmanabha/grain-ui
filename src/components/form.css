@@ -31,7 +31,8 @@
 
 :where(
   input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"]):not([type="color"]),
-  textarea
+  textarea,
+  select
 )[aria-invalid="true"] {
   border-color: var(--gr-danger);
 }

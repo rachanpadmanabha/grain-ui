@@ -107,6 +107,7 @@ export class GrainDropdown extends HTMLElement {
     this._summary?.removeEventListener("keydown", this._onSummaryKeydown);
     this._menu?.removeEventListener("keydown", this._onMenuKeydown);
     document.removeEventListener("click", this._onDocumentClick);
+    this._mounted = false;
   }
 
   _items() {

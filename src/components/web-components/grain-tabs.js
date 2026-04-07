@@ -31,6 +31,7 @@ export class GrainTabs extends HTMLElement {
 
     this._tabs.forEach((tab, index) => {
       const panel = this._panels[index];
+      if (!panel) return;
       const tabId = tab.id || `${prefix}-tab-${index + 1}`;
       const panelId = panel.id || `${prefix}-panel-${index + 1}`;
 
@@ -40,8 +41,12 @@ export class GrainTabs extends HTMLElement {
       panel.setAttribute("aria-labelledby", tabId);
       panel.tabIndex = 0;
 
-      tab.addEventListener("click", () => this.select(index, true));
-      tab.addEventListener("keydown", (event) => this._onKeydown(event, index));
+      const onClick = () => this.select(index, true);
+      const onKeydown = (event) => this._onKeydown(event, index);
+      tab.addEventListener("click", onClick);
+      tab.addEventListener("keydown", onKeydown);
+      tab._grainClick = onClick;
+      tab._grainKeydown = onKeydown;
     });
 
     const selectedIndex = Math.max(
@@ -76,6 +81,14 @@ export class GrainTabs extends HTMLElement {
         }
       })
     );
+  }
+
+  disconnectedCallback() {
+    this._tabs?.forEach((tab) => {
+      tab.removeEventListener("click", tab._grainClick);
+      tab.removeEventListener("keydown", tab._grainKeydown);
+    });
+    this._mounted = false;
   }
 
   _onKeydown(event, index) {

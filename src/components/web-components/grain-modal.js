@@ -44,6 +44,7 @@ export class GrainModal extends HTMLElement {
     this._closeButtons?.forEach((button) => button.removeEventListener("click", this._close));
     this._dialog?.removeEventListener("click", this._onDialogClick);
     document.removeEventListener("click", this._onGlobalClick);
+    this._mounted = false;
   }
 
   open() {

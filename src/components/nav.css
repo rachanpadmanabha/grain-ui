@@ -31,8 +31,13 @@ nav :where(a, button, summary) {
   gap: var(--gr-space-2);
   padding: var(--gr-space-2) var(--gr-space-3);
   border-radius: var(--gr-radius);
+  background: transparent;
+  border: none;
+  font-family: var(--gr-font);
+  font-size: var(--gr-text-sm);
   color: var(--gr-text-muted);
   text-decoration: none;
+  cursor: pointer;
 }
 
 nav :where(a, button, summary):hover {
