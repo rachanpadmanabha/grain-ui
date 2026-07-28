@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://rachanpadmanabha.github.io/grain-ui/
+    about: Component reference, theming guide, and getting started.
+  - name: Questions and ideas
+    url: https://github.com/rachanpadmanabha/grain-ui/discussions
+    about: Ask a question or float an idea before opening an issue.

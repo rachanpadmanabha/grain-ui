@@ -7,12 +7,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Build output
 node_modules
 dist
 dist-ssr
+docs/dist
+*.tgz
+
 *.local
 .agents/
 .skills-lock.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

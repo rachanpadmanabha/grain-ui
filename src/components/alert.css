@@ -1,4 +1,9 @@
-:where(aside[role="alert"], aside[role="status"], aside[role="note"], aside[role="complementary"]) {
+:where(
+  aside[role="alert"],
+  aside[role="status"],
+  aside[role="note"],
+  aside[role="complementary"]
+) {
   display: flex;
   gap: var(--gr-space-3);
   align-items: flex-start;

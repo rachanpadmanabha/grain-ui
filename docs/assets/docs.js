@@ -12,15 +12,20 @@ const setSidebarOpen = (value) => {
   updateSidebarButtons();
 };
 
-const sunIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
-const moonIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+const sunIcon =
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+const moonIcon =
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 
 const updateThemeButtons = () => {
   const isDark = resolvedTheme() === "dark";
   document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
     button.setAttribute("aria-pressed", String(isDark));
     button.innerHTML = isDark ? sunIcon : moonIcon;
-    button.setAttribute("data-tooltip", isDark ? "Switch to light" : "Switch to dark");
+    button.setAttribute(
+      "data-tooltip",
+      isDark ? "Switch to light" : "Switch to dark"
+    );
     button.setAttribute("data-side", "bottom");
   });
 };
@@ -111,7 +116,9 @@ const initPage = () => {
   }
 
   // Sidebar section scroll tracking
-  const sectionLinks = Array.from(document.querySelectorAll('.docs-sidebar a[href^="#"]'));
+  const sectionLinks = Array.from(
+    document.querySelectorAll('.docs-sidebar a[href^="#"]')
+  );
   const sections = sectionLinks
     .map((link) => document.querySelector(link.getAttribute("href")))
     .filter(Boolean);
@@ -204,10 +211,21 @@ const initPage = () => {
     if (pre.querySelector(".pre-lang-label")) return;
     const code = pre.querySelector("code");
     if (!code) return;
-    const langClass = Array.from(code.classList).find((c) => c.startsWith("language-"));
+    const langClass = Array.from(code.classList).find((c) =>
+      c.startsWith("language-")
+    );
     if (!langClass) return;
     const lang = langClass.replace("language-", "");
-    const labelMap = { html: "HTML", xml: "HTML", css: "CSS", javascript: "JS", js: "JS", typescript: "TS", bash: "SHELL", shell: "SHELL" };
+    const labelMap = {
+      html: "HTML",
+      xml: "HTML",
+      css: "CSS",
+      javascript: "JS",
+      js: "JS",
+      typescript: "TS",
+      bash: "SHELL",
+      shell: "SHELL"
+    };
     const label = document.createElement("span");
     label.className = "pre-lang-label";
     label.textContent = labelMap[lang] || lang.toUpperCase();
@@ -226,9 +244,7 @@ const initPage = () => {
 
     const sync = () => {
       const hue = input.value;
-      const targets = previewContainer
-        ? [previewContainer]
-        : [html];
+      const targets = previewContainer ? [previewContainer] : [html];
 
       targets.forEach((el) => {
         el.style.setProperty("--gr-hue", hue);
@@ -277,7 +293,13 @@ const isLocalLink = (anchor) => {
   if (anchor.target === "_blank") return false;
   if (anchor.origin !== location.origin) return false;
   const href = anchor.getAttribute("href");
-  if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("javascript:")) return false;
+  if (
+    !href ||
+    href.startsWith("#") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("javascript:")
+  )
+    return false;
   return true;
 };
 
@@ -293,14 +315,21 @@ const attachRouterLinks = () => {
     link._grRouter = true;
 
     // Prefetch on hover
-    link.addEventListener("mouseenter", () => {
-      const url = resolveURL(link.href);
-      if (!pageCache.has(url.pathname)) {
-        fetch(url.pathname).then((r) => r.ok ? r.text() : null).then((text) => {
-          if (text) pageCache.set(url.pathname, text);
-        }).catch(() => {});
-      }
-    }, { once: true });
+    link.addEventListener(
+      "mouseenter",
+      () => {
+        const url = resolveURL(link.href);
+        if (!pageCache.has(url.pathname)) {
+          fetch(url.pathname)
+            .then((r) => (r.ok ? r.text() : null))
+            .then((text) => {
+              if (text) pageCache.set(url.pathname, text);
+            })
+            .catch(() => {});
+        }
+      },
+      { once: true }
+    );
 
     link.addEventListener("click", (e) => {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -352,7 +381,9 @@ const navigateTo = async (href, pushState = true) => {
 
   // Swap body content
   document.title = doc.title;
-  document.body.replaceChildren(...Array.from(doc.body.childNodes).map((n) => document.adoptNode(n)));
+  document.body.replaceChildren(
+    ...Array.from(doc.body.childNodes).map((n) => document.adoptNode(n))
+  );
   document.body.setAttribute("data-page", doc.body.getAttribute("data-page") || "");
 
   // Update <html> level attributes if needed

@@ -21,115 +21,116 @@
   white-space: nowrap;
   background: var(--gr-accent);
   color: var(--gr-text-inverse);
+
+  &:hover {
+    background: var(--gr-accent-hover);
+    text-decoration: none;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gr-border-focus);
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &[data-variant="outline"] {
+    background: transparent;
+    border-color: var(--gr-border);
+    color: var(--gr-text);
+
+    &:hover {
+      background: var(--gr-bg-subtle);
+    }
+  }
+
+  &[data-variant="ghost"] {
+    background: transparent;
+    border-color: transparent;
+    color: var(--gr-text);
+
+    &:hover {
+      background: var(--gr-bg-muted);
+    }
+  }
+
+  &[data-variant="danger"] {
+    background: var(--gr-danger);
+
+    &:hover {
+      filter: brightness(0.94);
+    }
+  }
+
+  &[data-variant="subtle"] {
+    background: var(--gr-accent-light);
+    border-color: transparent;
+    color: var(--gr-accent-text);
+  }
+
+  &[data-size="sm"] {
+    padding: var(--gr-space-1) var(--gr-space-3);
+    font-size: var(--gr-text-xs);
+  }
+
+  &[data-size="lg"] {
+    padding: var(--gr-space-3) var(--gr-space-6);
+    font-size: var(--gr-text-base);
+  }
+
+  &[aria-busy="true"] {
+    opacity: 0.72;
+    cursor: wait;
+
+    &::after {
+      content: "";
+      width: 0.9em;
+      height: 0.9em;
+      border: 2px solid currentColor;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: gr-spin var(--gr-duration-slow) linear infinite;
+    }
+  }
 }
 
-:where(button, [role="button"], input[type="submit"], input[type="button"]):hover {
-  background: var(--gr-accent-hover);
+/* Anchors need explicit colours: the base `a` rule would otherwise win. */
+a[role="button"] {
+  color: var(--gr-text-inverse);
   text-decoration: none;
-}
 
-:where(button, [role="button"], input[type="submit"], input[type="button"]):active {
-  transform: translateY(1px);
-}
+  &:hover {
+    text-decoration: none;
+  }
 
-:where(button, [role="button"], input[type="submit"], input[type="button"]):focus-visible {
-  outline: 2px solid var(--gr-border-focus);
-  outline-offset: 2px;
-}
+  /* Listed out rather than wrapped in :where() so these keep enough
+     specificity to beat the a[role="button"] colour above on their own,
+     instead of relying on source order. */
+  &[data-variant="outline"],
+  &[data-variant="ghost"] {
+    color: var(--gr-text);
+  }
 
-:where(button, [role="button"], input[type="submit"], input[type="button"]):disabled,
-:where(button, [role="button"], input[type="submit"], input[type="button"])[aria-disabled="true"] {
-  opacity: 0.45;
-  cursor: not-allowed;
-  pointer-events: none;
-}
+  &[data-variant="danger"] {
+    color: var(--gr-text-inverse);
+  }
 
-:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="outline"] {
-  background: transparent;
-  border-color: var(--gr-border);
-  color: var(--gr-text);
-}
-
-:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="outline"]:hover {
-  background: var(--gr-bg-subtle);
-}
-
-:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="ghost"] {
-  background: transparent;
-  color: var(--gr-text);
-  border-color: transparent;
-}
-
-:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="ghost"]:hover {
-  background: var(--gr-bg-muted);
-}
-
-:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="danger"] {
-  background: var(--gr-danger);
-}
-
-:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="danger"]:hover {
-  filter: brightness(0.94);
-}
-
-:where(button, [role="button"], input[type="submit"], input[type="button"])[data-variant="subtle"] {
-  background: var(--gr-accent-light);
-  color: var(--gr-accent-text);
-  border-color: transparent;
-}
-
-:where(button, [role="button"], input[type="submit"], input[type="button"])[data-size="sm"] {
-  padding: var(--gr-space-1) var(--gr-space-3);
-  font-size: var(--gr-text-xs);
-}
-
-:where(button, [role="button"], input[type="submit"], input[type="button"])[data-size="lg"] {
-  padding: var(--gr-space-3) var(--gr-space-6);
-  font-size: var(--gr-text-base);
-}
-
-:where(button, [role="button"], input[type="submit"], input[type="button"])[aria-busy="true"] {
-  opacity: 0.72;
-  cursor: wait;
-}
-
-:where(button, [role="button"], input[type="submit"], input[type="button"])[aria-busy="true"]::after {
-  content: "";
-  width: 0.9em;
-  height: 0.9em;
-  border: 2px solid currentColor;
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: gr-spin var(--gr-duration-slow) linear infinite;
+  &[data-variant="subtle"] {
+    color: var(--gr-accent-text);
+  }
 }
 
 @keyframes gr-spin {
   to {
     transform: rotate(360deg);
   }
-}
-
-a[role="button"] {
-  color: var(--gr-text-inverse);
-  text-decoration: none;
-}
-
-a[role="button"]:hover {
-  text-decoration: none;
-}
-
-a[role="button"][data-variant="outline"] {
-  color: var(--gr-text);
-}
-
-a[role="button"][data-variant="ghost"] {
-  color: var(--gr-text);
-}
-
-a[role="button"][data-variant="danger"] {
-  color: var(--gr-text-inverse);
-}
-
-a[role="button"][data-variant="subtle"] {
-  color: var(--gr-accent-text);
 }

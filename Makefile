@@ -1,60 +1,69 @@
-VERSION = 0.1.3
-BANNER = /*! Grain UI v$(VERSION) | MIT License | https://github.com/rachanpadmanabha/grain-ui */
+# Grain UI build.
+#
+# package.json is the single source of truth for the version and for the
+# browser targets, so nothing here needs bumping at release time.
 
-SRC_CSS = src/tokens.css src/base.css \
-	src/components/button.css \
-	src/components/form.css \
-	src/components/card.css \
-	src/components/badge.css \
-	src/components/table.css \
-	src/components/alert.css \
-	src/components/modal.css \
-	src/components/tabs.css \
-	src/components/tooltip.css \
-	src/components/progress.css \
-	src/components/spinner.css \
-	src/components/avatar.css \
-	src/components/dropdown.css \
-	src/components/nav.css
+VERSION := $(shell node -p "require('./package.json').version")
+BANNER  := /*! Grain UI v$(VERSION) | MIT License | https://github.com/rachanpadmanabha/grain-ui */
 
-SRC_JS = src/index.js \
-	src/components/web-components/grain-tabs.js \
-	src/components/web-components/grain-toast.js \
-	src/components/web-components/grain-modal.js \
-	src/components/web-components/grain-dropdown.js
+BIN     := ./node_modules/.bin
+CSS_IN  := src/grain.css
+# Two JS entries: a global-assigning IIFE for <script> tags, and the ESM
+# module bundlers should resolve.
+IIFE_IN := src/iife.js
+ESM_IN  := src/index.js
 
-all: dist/grain.css dist/grain.min.css dist/grain.js dist/grain.min.js
-	rm -f dist/.grain.raw.css
+CSS_SRC := $(shell find src -name '*.css')
+JS_SRC  := $(shell find src -name '*.js')
+
+ESBUILD_FLAGS := --bundle --target=es2020
+LIGHTNING_FLAGS := --bundle --browserslist
+
+OUT := dist/grain.css dist/grain.min.css \
+	dist/grain.js dist/grain.min.js \
+	dist/grain.esm.js dist/grain.d.ts
+
+all: $(OUT)
 
 dist:
-	mkdir -p dist
+	@mkdir -p dist
 
-dist/.grain.raw.css: $(SRC_CSS) | dist
-	cat $(SRC_CSS) > $@
+# `banner` prepends the license header without a temp file in the tree.
+define banner
+	@printf '%s\n' '$(BANNER)' | cat - $(1) > $(1).tmp && mv $(1).tmp $(1)
+endef
 
-dist/grain.css: dist/.grain.raw.css | dist
-	printf '%s\n' '$(BANNER)' > $@
-	cat $< >> $@
+dist/grain.css: $(CSS_SRC) package.json | dist
+	$(BIN)/lightningcss $(LIGHTNING_FLAGS) $(CSS_IN) -o $@
+	$(call banner,$@)
 
-dist/grain.min.css: dist/.grain.raw.css | dist
-	npx lightningcss --minify $< -o dist/.grain.min.css
-	printf '%s\n' '$(BANNER)' > $@
-	cat dist/.grain.min.css >> $@
-	rm -f dist/.grain.min.css
+dist/grain.min.css: $(CSS_SRC) package.json | dist
+	$(BIN)/lightningcss $(LIGHTNING_FLAGS) --minify $(CSS_IN) -o $@
+	$(call banner,$@)
 
-dist/grain.js: $(SRC_JS) | dist
-	npx esbuild src/index.js --bundle --format=iife --global-name=GrainUI --target=es2020 --outfile=dist/.grain.js
-	printf '%s\n' '$(BANNER)' > $@
-	cat dist/.grain.js >> $@
-	rm -f dist/.grain.js
+dist/grain.js: $(JS_SRC) package.json | dist
+	$(BIN)/esbuild $(IIFE_IN) $(ESBUILD_FLAGS) --format=iife --outfile=$@
+	$(call banner,$@)
 
-dist/grain.min.js: $(SRC_JS) | dist
-	npx esbuild src/index.js --bundle --format=iife --global-name=GrainUI --target=es2020 --minify --outfile=dist/.grain.min.js
-	printf '%s\n' '$(BANNER)' > $@
-	cat dist/.grain.min.js >> $@
-	rm -f dist/.grain.min.js
+dist/grain.min.js: $(JS_SRC) package.json | dist
+	$(BIN)/esbuild $(IIFE_IN) $(ESBUILD_FLAGS) --format=iife --minify --outfile=$@
+	$(call banner,$@)
+
+dist/grain.esm.js: $(JS_SRC) package.json | dist
+	$(BIN)/esbuild $(ESM_IN) $(ESBUILD_FLAGS) --format=esm --outfile=$@
+	$(call banner,$@)
+
+dist/grain.d.ts: src/grain.d.ts | dist
+	@cp $< $@
+
+# The docs site loads the build from docs/dist so local edits are visible
+# without publishing. Regenerated on every build; not tracked in git.
+docs: all
+	@rm -rf docs/dist
+	@mkdir -p docs/dist
+	@cp dist/grain.min.css dist/grain.min.js docs/dist/
 
 clean:
-	rm -f dist/grain.css dist/grain.min.css dist/grain.js dist/grain.min.js dist/.grain.raw.css
+	rm -rf dist docs/dist
 
-.PHONY: all clean
+.PHONY: all clean docs

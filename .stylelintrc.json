@@ -1,0 +1,18 @@
+{
+  "extends": "stylelint-config-standard",
+  "ignoreFiles": ["dist/**/*.css", "node_modules/**"],
+  "rules": {
+    "custom-property-pattern": "^gr-[a-z0-9-]+$",
+    "selector-class-pattern": "^gr-[a-z0-9-]+$",
+    "import-notation": "string",
+
+    "declaration-block-no-redundant-longhand-properties": null,
+    "no-descending-specificity": null,
+    "custom-property-empty-line-before": null,
+    "comment-empty-line-before": null,
+
+    "hue-degree-notation": null,
+    "alpha-value-notation": null,
+    "value-keyword-case": null
+  }
+}
